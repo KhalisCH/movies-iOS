@@ -56,12 +56,28 @@
 			children = (
 				CBA2908A1EF27324001912F7 /* AppDelegate.swift */,
 				CBA2908C1EF27324001912F7 /* ViewController.swift */,
-				CBA2908E1EF27324001912F7 /* Main.storyboard */,
-				CBA290911EF27324001912F7 /* Assets.xcassets */,
-				CBA290931EF27324001912F7 /* LaunchScreen.storyboard */,
-				CBA290961EF27324001912F7 /* Info.plist */,
+				CBA2909C1EF274B7001912F7 /* Storyboard */,
+				CBA2909D1EF274C9001912F7 /* Xcode */,
 			);
 			path = Movies;
+			sourceTree = "<group>";
+		};
+		CBA2909C1EF274B7001912F7 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				CBA290931EF27324001912F7 /* LaunchScreen.storyboard */,
+				CBA2908E1EF27324001912F7 /* Main.storyboard */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		CBA2909D1EF274C9001912F7 /* Xcode */ = {
+			isa = PBXGroup;
+			children = (
+				CBA290911EF27324001912F7 /* Assets.xcassets */,
+				CBA290961EF27324001912F7 /* Info.plist */,
+			);
+			name = Xcode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +313,7 @@
 				CBA2909B1EF27324001912F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
