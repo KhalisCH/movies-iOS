@@ -8,19 +8,22 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     //MARK: - Properties
+    @IBOutlet weak var gradientView: UIView!                    //View for the gradient
+    @IBOutlet weak var movieCollectionView: UICollectionView!   //CollectionView for the movies
+    @IBOutlet weak var tvCollectionView: UICollectionView!      //CollectionView for the tv shows
     
-    //View for the gradient
-    @IBOutlet weak var gradientView: UIView!
-    
-    //Variable for gradient background
-    var gradientLayer: CAGradientLayer! = CAGradientLayer()
+    var gradientLayer: CAGradientLayer! = CAGradientLayer()     //Variable for gradient background
+    var moviePosters: [String] = []                             //Array of posters url for movies
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        movieCollectionView.delegate = self
+        movieCollectionView.dataSource = self
+        tvCollectionView.delegate = self
+        tvCollectionView.dataSource = self
     }
     
     //Display gradient
@@ -28,12 +31,28 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         createGradientLayer()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    //MARK: - CollectionViewDelegate
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
     }
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        var cell = UICollectionViewCell()
+        if collectionView === movieCollectionView {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
+        }
+        else {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tvCell", for: indexPath) as! TVCollectionViewCell
+        }
+        
+        return cell
+    }
 
     /*
     // MARK: - Navigation
@@ -57,5 +76,4 @@ class HomeViewController: UIViewController {
         gradientLayer.locations = [0.0, 0.3, 0.75]
         gradientView.layer.addSublayer(gradientLayer)
     }
-
 }

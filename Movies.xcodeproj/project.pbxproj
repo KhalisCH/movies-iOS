@@ -16,6 +16,8 @@
 		CBA290A31EF27E22001912F7 /* iosLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA290A21EF27E22001912F7 /* iosLogo.png */; };
 		CBCA71A21EF2894500AEF294 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA71A11EF2894500AEF294 /* HomeViewController.swift */; };
 		CBCA71A41EF2973400AEF294 /* arthur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CBCA71A31EF2973400AEF294 /* arthur.jpg */; };
+		CBCA71AA1EF2C9ED00AEF294 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA71A91EF2C9ED00AEF294 /* MovieCollectionViewCell.swift */; };
+		CBCA71AC1EF2C9FA00AEF294 /* TVCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA71AB1EF2C9FA00AEF294 /* TVCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		CBA290A21EF27E22001912F7 /* iosLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iosLogo.png; path = Image/iosLogo.png; sourceTree = "<group>"; };
 		CBCA71A11EF2894500AEF294 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CBCA71A31EF2973400AEF294 /* arthur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = arthur.jpg; path = Image/arthur.jpg; sourceTree = "<group>"; };
+		CBCA71A91EF2C9ED00AEF294 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		CBCA71AB1EF2C9FA00AEF294 /* TVCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVCollectionViewCell.swift; sourceTree = "<group>"; };
 		DA91CF22A3567B79E0ABBAA4 /* Pods-Movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movies/Pods-Movies.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,7 +136,9 @@
 		CBCA71A01EF2893300AEF294 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				CBCA71A91EF2C9ED00AEF294 /* MovieCollectionViewCell.swift */,
 				CBCA71A11EF2894500AEF294 /* HomeViewController.swift */,
+				CBCA71AB1EF2C9FA00AEF294 /* TVCollectionViewCell.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -265,6 +271,8 @@
 				CBA290A01EF27937001912F7 /* LaunchScreenViewController.swift in Sources */,
 				CBA2908B1EF27324001912F7 /* AppDelegate.swift in Sources */,
 				CBCA71A21EF2894500AEF294 /* HomeViewController.swift in Sources */,
+				CBCA71AA1EF2C9ED00AEF294 /* MovieCollectionViewCell.swift in Sources */,
+				CBCA71AC1EF2C9FA00AEF294 /* TVCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
