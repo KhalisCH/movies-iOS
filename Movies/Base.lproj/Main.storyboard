@@ -51,7 +51,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.1647058824" green="0.32156862749999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Ba3-Hq-9jd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IyU-Us-qim"/>
                             <constraint firstItem="Ba3-Hq-9jd" firstAttribute="top" secondItem="XQz-kg-tA1" secondAttribute="bottom" constant="5" id="QSG-5o-INq"/>
@@ -67,10 +67,10 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--View Controller-->
+        <!--Movies-->
         <scene sceneID="eog-QV-daT">
             <objects>
-                <viewController id="wYT-gb-ZcB" sceneMemberID="viewController">
+                <viewController id="wYT-gb-ZcB" customClass="HomeViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eY1-G3-zOK"/>
                         <viewControllerLayoutGuide type="bottom" id="OvG-g0-0vh"/>
@@ -78,9 +78,47 @@
                     <view key="view" contentMode="scaleToFill" id="AhK-9B-BuQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xS9-rx-HUc">
+                                <rect key="frame" x="-0.5" y="-0.5" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arthur.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="M9D-pb-F6j">
+                                <rect key="frame" x="-0.5" y="64" width="375" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="YGh-0D-Kju"/>
+                                </constraints>
+                            </imageView>
+                            <tabBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="H04-og-g5M">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem title="Home" image="ic_home_36pt" selectedImage="ic_home_36pt" id="4Xl-i3-fYB"/>
+                                    <tabBarItem title="Movies" image="ic_movies_36pt" selectedImage="ic_movies_36pt" id="HjT-TQ-SLg"/>
+                                    <tabBarItem title="TV Shows" image="ic_tv_shows_36pt" selectedImage="ic_tv_shows_36pt" id="CAz-kM-Ccm"/>
+                                    <tabBarItem title="Profile" image="ic_person_36pt" selectedImage="ic_person_36pt" id="sBg-44-Rnd"/>
+                                </items>
+                                <color key="selectedImageTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </tabBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xS9-rx-HUc" firstAttribute="centerX" secondItem="AhK-9B-BuQ" secondAttribute="centerX" id="4Ea-Ja-VTW"/>
+                            <constraint firstItem="M9D-pb-F6j" firstAttribute="centerX" secondItem="AhK-9B-BuQ" secondAttribute="centerX" id="BrI-kX-xxh"/>
+                            <constraint firstItem="H04-og-g5M" firstAttribute="width" secondItem="xS9-rx-HUc" secondAttribute="width" id="F15-yk-Yyk"/>
+                            <constraint firstItem="OvG-g0-0vh" firstAttribute="top" secondItem="H04-og-g5M" secondAttribute="bottom" id="Kqw-LC-uuE"/>
+                            <constraint firstItem="xS9-rx-HUc" firstAttribute="width" secondItem="AhK-9B-BuQ" secondAttribute="width" id="N0y-Kq-OUa"/>
+                            <constraint firstItem="H04-og-g5M" firstAttribute="centerX" secondItem="xS9-rx-HUc" secondAttribute="centerX" id="Vnc-0H-HUP"/>
+                            <constraint firstItem="M9D-pb-F6j" firstAttribute="width" secondItem="AhK-9B-BuQ" secondAttribute="width" id="WdN-zb-Yg1"/>
+                            <constraint firstItem="M9D-pb-F6j" firstAttribute="top" secondItem="eY1-G3-zOK" secondAttribute="bottom" id="alk-Za-D52"/>
+                            <constraint firstItem="xS9-rx-HUc" firstAttribute="height" secondItem="AhK-9B-BuQ" secondAttribute="height" id="gcG-gG-JSv"/>
+                            <constraint firstItem="xS9-rx-HUc" firstAttribute="centerY" secondItem="AhK-9B-BuQ" secondAttribute="centerY" id="xPe-T4-Vna"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="z1V-E9-DBg"/>
+                    <navigationItem key="navigationItem" title="Movies" id="z1V-E9-DBg"/>
+                    <connections>
+                        <outlet property="gradientView" destination="xS9-rx-HUc" id="1j6-S6-7Nd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vdz-LC-iln" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -91,9 +129,12 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="l2R-ED-wMj" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nth-0J-eTK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="Nth-0J-eTK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -106,6 +147,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arthur.jpg" width="1500" height="694"/>
+        <image name="ic_home_36pt" width="36" height="36"/>
+        <image name="ic_movies_36pt" width="36" height="36"/>
+        <image name="ic_person_36pt" width="36" height="36"/>
+        <image name="ic_tv_shows_36pt" width="36" height="36"/>
         <image name="iosLogo.png" width="500" height="400"/>
     </resources>
 </document>

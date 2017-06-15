@@ -14,6 +14,8 @@
 		CBA290951EF27324001912F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA290931EF27324001912F7 /* LaunchScreen.storyboard */; };
 		CBA290A01EF27937001912F7 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA2909F1EF27937001912F7 /* LaunchScreenViewController.swift */; };
 		CBA290A31EF27E22001912F7 /* iosLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA290A21EF27E22001912F7 /* iosLogo.png */; };
+		CBCA71A21EF2894500AEF294 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA71A11EF2894500AEF294 /* HomeViewController.swift */; };
+		CBCA71A41EF2973400AEF294 /* arthur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CBCA71A31EF2973400AEF294 /* arthur.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		CBA290961EF27324001912F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBA2909F1EF27937001912F7 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		CBA290A21EF27E22001912F7 /* iosLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iosLogo.png; path = Image/iosLogo.png; sourceTree = "<group>"; };
+		CBCA71A11EF2894500AEF294 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CBCA71A31EF2973400AEF294 /* arthur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = arthur.jpg; path = Image/arthur.jpg; sourceTree = "<group>"; };
 		DA91CF22A3567B79E0ABBAA4 /* Pods-Movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movies/Pods-Movies.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				CBA2908A1EF27324001912F7 /* AppDelegate.swift */,
+				CBCA71A01EF2893300AEF294 /* Home */,
 				CBA290A11EF27BF9001912F7 /* Image */,
 				CBA2909E1EF27920001912F7 /* LaunchScreen */,
 				CBA2909C1EF274B7001912F7 /* Storyboard */,
@@ -118,9 +123,18 @@
 		CBA290A11EF27BF9001912F7 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				CBCA71A31EF2973400AEF294 /* arthur.jpg */,
 				CBA290A21EF27E22001912F7 /* iosLogo.png */,
 			);
 			name = Image;
+			sourceTree = "<group>";
+		};
+		CBCA71A01EF2893300AEF294 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CBCA71A11EF2894500AEF294 /* HomeViewController.swift */,
+			);
+			name = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +199,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBCA71A41EF2973400AEF294 /* arthur.jpg in Resources */,
 				CBA290951EF27324001912F7 /* LaunchScreen.storyboard in Resources */,
 				CBA290921EF27324001912F7 /* Assets.xcassets in Resources */,
 				CBA290A31EF27E22001912F7 /* iosLogo.png in Resources */,
@@ -249,6 +264,7 @@
 			files = (
 				CBA290A01EF27937001912F7 /* LaunchScreenViewController.swift in Sources */,
 				CBA2908B1EF27324001912F7 /* AppDelegate.swift in Sources */,
+				CBCA71A21EF2894500AEF294 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
