@@ -9,5 +9,6 @@
 import UIKit
 
 class MovieCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var moviePosterImageView: UIImageView!   //ImageView of the cell of the movieCollectionView
+    @IBOutlet weak var homeMoviePosterImageView: UIImageView!   //ImageView of the cell of the movieCollectionView of Home
+    @IBOutlet weak var moviePosterImageView: UIImageView!       //ImageView of the cell of the movieCollectionView of Movies
 }

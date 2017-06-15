@@ -68,7 +68,7 @@
             </objects>
             <point key="canvasLocation" x="44" y="26"/>
         </scene>
-        <!--Movies-->
+        <!--Home-->
         <scene sceneID="eog-QV-daT">
             <objects>
                 <viewController id="wYT-gb-ZcB" customClass="HomeViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
@@ -141,7 +141,7 @@
                                                         </constraints>
                                                         <size key="customSize" width="140" height="200"/>
                                                         <connections>
-                                                            <outlet property="moviePosterImageView" destination="70U-kh-mJC" id="yJp-OZ-9Z1"/>
+                                                            <outlet property="homeMoviePosterImageView" destination="70U-kh-mJC" id="xbf-10-y5Y"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
@@ -236,7 +236,7 @@
                             <constraint firstItem="ptY-DB-XoG" firstAttribute="leading" secondItem="AhK-9B-BuQ" secondAttribute="leading" id="vhM-hV-5GI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Movies" id="z1V-E9-DBg"/>
+                    <navigationItem key="navigationItem" title="Home" id="z1V-E9-DBg"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="880"/>
                     <connections>
@@ -252,7 +252,7 @@
         <!--Movies-->
         <scene sceneID="hW1-Kb-tgq">
             <objects>
-                <viewController id="0lD-6b-75z" sceneMemberID="viewController">
+                <viewController id="0lD-6b-75z" customClass="MovieViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NYt-Yf-2yw"/>
                         <viewControllerLayoutGuide type="bottom" id="MXX-Lj-h38"/>
@@ -260,9 +260,94 @@
                     <view key="view" contentMode="scaleToFill" id="xjG-lS-hk0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gp9-a7-XPn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arthur.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="LNE-yV-n4p">
+                                <rect key="frame" x="0.0" y="64" width="375" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="sux-pI-9Wi"/>
+                                </constraints>
+                            </imageView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hMY-v0-iuD">
+                                <rect key="frame" x="0.0" y="314" width="375" height="29"/>
+                                <segments>
+                                    <segment title="Popular"/>
+                                    <segment title="Upcomming"/>
+                                    <segment title="Top Rated"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                            </segmentedControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WGD-54-dLk">
+                                <rect key="frame" x="8" y="357" width="359" height="246"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="6" minimumInteritemSpacing="0.0" id="f4N-im-bRb">
+                                    <size key="itemSize" width="110" height="160"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCell" id="yRn-N8-oHC" customClass="MovieCollectionViewCell" customModule="Movies" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="160"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="110" height="160"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWj-I0-VRu">
+                                                    <rect key="frame" x="0.0" y="0.0" width="110" height="160"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="yWj-I0-VRu" firstAttribute="centerX" secondItem="yRn-N8-oHC" secondAttribute="centerX" id="KUG-Fq-fHK"/>
+                                            <constraint firstItem="yWj-I0-VRu" firstAttribute="height" secondItem="yRn-N8-oHC" secondAttribute="height" id="LXk-j5-baY"/>
+                                            <constraint firstItem="yWj-I0-VRu" firstAttribute="centerY" secondItem="yRn-N8-oHC" secondAttribute="centerY" id="zHK-Oq-iNP"/>
+                                            <constraint firstItem="yWj-I0-VRu" firstAttribute="width" secondItem="yRn-N8-oHC" secondAttribute="width" id="ziE-dQ-zGP"/>
+                                        </constraints>
+                                        <size key="customSize" width="110" height="160"/>
+                                        <connections>
+                                            <outlet property="moviePosterImageView" destination="yWj-I0-VRu" id="Nuu-jJ-gyg"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hMY-v0-iuD" firstAttribute="width" secondItem="xjG-lS-hk0" secondAttribute="width" id="4IA-je-iME"/>
+                            <constraint firstAttribute="trailing" secondItem="WGD-54-dLk" secondAttribute="trailing" constant="8" id="9E6-W2-cjh"/>
+                            <constraint firstItem="MXX-Lj-h38" firstAttribute="top" secondItem="WGD-54-dLk" secondAttribute="bottom" constant="15" id="A1z-rA-PKh"/>
+                            <constraint firstItem="LNE-yV-n4p" firstAttribute="width" secondItem="xjG-lS-hk0" secondAttribute="width" id="AOB-ts-fhK"/>
+                            <constraint firstAttribute="bottom" secondItem="Gp9-a7-XPn" secondAttribute="bottom" id="Cjb-cw-ffQ"/>
+                            <constraint firstItem="Gp9-a7-XPn" firstAttribute="leading" secondItem="xjG-lS-hk0" secondAttribute="leading" id="EKC-zK-zTY"/>
+                            <constraint firstItem="Gp9-a7-XPn" firstAttribute="top" secondItem="xjG-lS-hk0" secondAttribute="top" id="IwO-qr-6Gc"/>
+                            <constraint firstItem="hMY-v0-iuD" firstAttribute="centerX" secondItem="xjG-lS-hk0" secondAttribute="centerX" id="Mnf-Ti-hgP"/>
+                            <constraint firstItem="WGD-54-dLk" firstAttribute="leading" secondItem="xjG-lS-hk0" secondAttribute="leading" constant="8" id="YCW-GN-8R3"/>
+                            <constraint firstItem="LNE-yV-n4p" firstAttribute="centerX" secondItem="xjG-lS-hk0" secondAttribute="centerX" id="kzh-eh-4ml"/>
+                            <constraint firstItem="hMY-v0-iuD" firstAttribute="top" secondItem="LNE-yV-n4p" secondAttribute="bottom" id="ry4-FN-oW5"/>
+                            <constraint firstItem="LNE-yV-n4p" firstAttribute="top" secondItem="NYt-Yf-2yw" secondAttribute="bottom" id="sEm-Qv-bVx"/>
+                            <constraint firstAttribute="trailing" secondItem="Gp9-a7-XPn" secondAttribute="trailing" id="yl7-Ci-Cow"/>
+                            <constraint firstItem="WGD-54-dLk" firstAttribute="top" secondItem="hMY-v0-iuD" secondAttribute="bottom" constant="15" id="zLw-Yq-xUB"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Movies" id="mId-Tz-5OO"/>
+                    <navigationItem key="navigationItem" title="Movies" id="mId-Tz-5OO">
+                        <barButtonItem key="leftBarButtonItem" image="ic_menu_24pt" id="pyH-hB-Mr9">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="ic_search_24pt" id="G7y-k0-Va4">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="gradientView" destination="Gp9-a7-XPn" id="dml-Ok-is8"/>
+                        <outlet property="movieCollectionView" destination="WGD-54-dLk" id="7yP-ab-Ust"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8r-X6-tAV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -420,8 +505,10 @@
     <resources>
         <image name="arthur.jpg" width="1500" height="694"/>
         <image name="ic_home_36pt" width="36" height="36"/>
+        <image name="ic_menu_24pt" width="24" height="24"/>
         <image name="ic_movies_36pt" width="36" height="36"/>
         <image name="ic_person_36pt" width="36" height="36"/>
+        <image name="ic_search_24pt" width="24" height="24"/>
         <image name="ic_tv_shows_36pt" width="36" height="36"/>
         <image name="iosLogo.png" width="500" height="400"/>
     </resources>

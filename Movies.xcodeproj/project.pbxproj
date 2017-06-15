@@ -18,6 +18,7 @@
 		CBCA71A41EF2973400AEF294 /* arthur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CBCA71A31EF2973400AEF294 /* arthur.jpg */; };
 		CBCA71AA1EF2C9ED00AEF294 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA71A91EF2C9ED00AEF294 /* MovieCollectionViewCell.swift */; };
 		CBCA71AC1EF2C9FA00AEF294 /* TVCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA71AB1EF2C9FA00AEF294 /* TVCollectionViewCell.swift */; };
+		CBCA71AF1EF2ECF600AEF294 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA71AE1EF2ECF600AEF294 /* MovieViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		CBCA71A31EF2973400AEF294 /* arthur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = arthur.jpg; path = Image/arthur.jpg; sourceTree = "<group>"; };
 		CBCA71A91EF2C9ED00AEF294 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		CBCA71AB1EF2C9FA00AEF294 /* TVCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVCollectionViewCell.swift; sourceTree = "<group>"; };
+		CBCA71AE1EF2ECF600AEF294 /* MovieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		DA91CF22A3567B79E0ABBAA4 /* Pods-Movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movies/Pods-Movies.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +94,7 @@
 				CBCA71A01EF2893300AEF294 /* Home */,
 				CBA290A11EF27BF9001912F7 /* Image */,
 				CBA2909E1EF27920001912F7 /* LaunchScreen */,
+				CBCA71AD1EF2ECD700AEF294 /* Movie */,
 				CBA2909C1EF274B7001912F7 /* Storyboard */,
 				CBA2909D1EF274C9001912F7 /* Xcode */,
 			);
@@ -141,6 +144,14 @@
 				CBCA71AB1EF2C9FA00AEF294 /* TVCollectionViewCell.swift */,
 			);
 			name = Home;
+			sourceTree = "<group>";
+		};
+		CBCA71AD1EF2ECD700AEF294 /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				CBCA71AE1EF2ECF600AEF294 /* MovieViewController.swift */,
+			);
+			name = Movie;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +284,7 @@
 				CBCA71A21EF2894500AEF294 /* HomeViewController.swift in Sources */,
 				CBCA71AA1EF2C9ED00AEF294 /* MovieCollectionViewCell.swift in Sources */,
 				CBCA71AC1EF2C9FA00AEF294 /* TVCollectionViewCell.swift in Sources */,
+				CBCA71AF1EF2ECF600AEF294 /* MovieViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

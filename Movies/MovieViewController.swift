@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  MovieViewController.swift
 //  Movies
 //
 //  Created by Khalis on 15/06/2017.
@@ -8,27 +8,22 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class MovieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     //MARK: - Properties
     
     @IBOutlet weak var gradientView: UIView!                    //View for the gradient
-    @IBOutlet weak var movieCollectionView: UICollectionView!   //CollectionView for the movies
-    @IBOutlet weak var tvCollectionView: UICollectionView!      //CollectionView for the tv shows
+    @IBOutlet weak var movieCollectionView: UICollectionView!   //collection
     
     var gradientLayer: CAGradientLayer! = CAGradientLayer()     //Variable for gradient background
-    var moviePosters: [String] = []                             //Array of posters url for movies
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         movieCollectionView.delegate = self
         movieCollectionView.dataSource = self
-        
-        tvCollectionView.delegate = self
-        tvCollectionView.dataSource = self
     }
-    
+
     //Display gradient
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,7 +33,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     //MARK: - CollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 20
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -46,18 +41,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView === movieCollectionView {
-            let cell: MovieCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
-            cell.homeMoviePosterImageView.image = setImageFromURl(url: "https://image.tmdb.org/t/p/w500/zxkY8byBnCsXodEYpK8tmwEGXBI.jpg")
-            return cell
-        }
-        else {
-            let cell: TVCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "tvCell", for: indexPath) as! TVCollectionViewCell
-            cell.tvPosterImageView.image = setImageFromURl(url: "https://image.tmdb.org/t/p/w500/mBDlsOhNOV1MkNii81aT14EYQ4S.jpg")
-            return cell
-        }
+        let cell: MovieCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
+        cell.moviePosterImageView.image = setImageFromURl(url: "https://image.tmdb.org/t/p/w500/zxkY8byBnCsXodEYpK8tmwEGXBI.jpg")
+        return cell
     }
 
+    
     /*
     // MARK: - Navigation
 
