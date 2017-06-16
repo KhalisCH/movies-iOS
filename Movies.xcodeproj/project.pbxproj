@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C4A3DB5D55A0E7BF36991E5B /* Pods_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2002E92013054158BFF787 /* Pods_Movies.framework */; };
+		CB8D62931EF43946006F9BC2 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D62921EF43946006F9BC2 /* MenuTableViewController.swift */; };
+		CB8D62951EF43EBF006F9BC2 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D62941EF43EBF006F9BC2 /* MenuTableViewCell.swift */; };
 		CBA2908B1EF27324001912F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA2908A1EF27324001912F7 /* AppDelegate.swift */; };
 		CBA290901EF27324001912F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA2908E1EF27324001912F7 /* Main.storyboard */; };
 		CBA290921EF27324001912F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBA290911EF27324001912F7 /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 /* Begin PBXFileReference section */
 		BC2002E92013054158BFF787 /* Pods_Movies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C39C9C962A525E87D8A4CEF9 /* Pods-Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movies/Pods-Movies.release.xcconfig"; sourceTree = "<group>"; };
+		CB8D62921EF43946006F9BC2 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		CB8D62941EF43EBF006F9BC2 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		CBA290871EF27324001912F7 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA2908A1EF27324001912F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBA2908F1EF27324001912F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,6 +73,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CB8D62911EF43913006F9BC2 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				CB8D62921EF43946006F9BC2 /* MenuTableViewController.swift */,
+				CB8D62941EF43EBF006F9BC2 /* MenuTableViewCell.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
 		CBA2907E1EF27324001912F7 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +107,7 @@
 				CBCA71A01EF2893300AEF294 /* Home */,
 				CBA290A11EF27BF9001912F7 /* Image */,
 				CBA2909E1EF27920001912F7 /* LaunchScreen */,
+				CB8D62911EF43913006F9BC2 /* Menu */,
 				CBCA71AD1EF2ECD700AEF294 /* Movie */,
 				CBA2909C1EF274B7001912F7 /* Storyboard */,
 				CBA2909D1EF274C9001912F7 /* Xcode */,
@@ -280,6 +294,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBA290A01EF27937001912F7 /* LaunchScreenViewController.swift in Sources */,
+				CB8D62931EF43946006F9BC2 /* MenuTableViewController.swift in Sources */,
+				CB8D62951EF43EBF006F9BC2 /* MenuTableViewCell.swift in Sources */,
 				CBA2908B1EF27324001912F7 /* AppDelegate.swift in Sources */,
 				CBCA71A21EF2894500AEF294 /* HomeViewController.swift in Sources */,
 				CBCA71AA1EF2C9ED00AEF294 /* MovieCollectionViewCell.swift in Sources */,

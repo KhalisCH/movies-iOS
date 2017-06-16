@@ -4,4 +4,5 @@ use_frameworks!
 
 target 'Movies' do
     pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
+    pod 'SideMenu'
 end

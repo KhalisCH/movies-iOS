@@ -339,6 +339,9 @@
                     <navigationItem key="navigationItem" title="Movies" id="mId-Tz-5OO">
                         <barButtonItem key="leftBarButtonItem" image="ic_menu_24pt" id="pyH-hB-Mr9">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="hfB-7e-iel" kind="show" id="6ib-6r-oWd"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="ic_search_24pt" id="G7y-k0-Va4">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -374,6 +377,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37r-05-Mn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2654" y="788"/>
+        </scene>
+        <!--Genres-->
+        <scene sceneID="JuR-GC-t5T">
+            <objects>
+                <tableViewController id="T0x-6V-tm6" customClass="MenuTableViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="kqf-4K-Gqe">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="menuCell" id="nNM-XQ-EeV" customClass="MenuTableViewCell" customModule="Movies" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nNM-XQ-EeV" id="oIn-Io-qL8">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QcE-pN-vWl">
+                                            <rect key="frame" x="8" y="10" width="56" height="25"/>
+                                            <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="20"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="QcE-pN-vWl" firstAttribute="centerY" secondItem="oIn-Io-qL8" secondAttribute="centerY" id="gW3-2t-FG1"/>
+                                        <constraint firstItem="QcE-pN-vWl" firstAttribute="leading" secondItem="oIn-Io-qL8" secondAttribute="leading" constant="8" id="t9V-Ng-gtt"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="genreLabel" destination="QcE-pN-vWl" id="Zpb-yo-KCh"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="T0x-6V-tm6" id="V0B-QK-QVe"/>
+                            <outlet property="delegate" destination="T0x-6V-tm6" id="dem-ka-kJT"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Genres" id="J8g-60-Iaf"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MQQ-rJ-PSy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4778" y="437"/>
         </scene>
         <!--Profile-->
         <scene sceneID="X69-RK-DqU">
@@ -504,6 +552,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sle-Hj-Zc2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1813.5999999999999" y="1461.3193403298351"/>
+        </scene>
+        <!--Side Menu Navigation Controller-->
+        <scene sceneID="aA3-y7-RZ5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hfB-7e-iel" customClass="UISideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="YGQ-s8-Yln">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.14660370560103619" green="0.20708095490623438" blue="0.25706336461953105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftSide" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="T0x-6V-tm6" kind="relationship" relationship="rootViewController" id="CS3-27-6av"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f18-bN-O9t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3839" y="437"/>
         </scene>
     </scenes>
     <resources>

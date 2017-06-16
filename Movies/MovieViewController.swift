@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Spring
+import SideMenu
 
 class MovieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
 
@@ -34,6 +34,9 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
         textFieldInsideSearchBar?.textColor = UIColor.white
         menuButtonItem = navigationItem.leftBarButtonItem
+        
+        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
     }
 
     //Display gradient

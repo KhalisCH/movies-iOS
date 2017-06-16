@@ -1,7 +1,9 @@
 PODS:
+  - SideMenu (2.0.7)
   - Spring (1.0.3)
 
 DEPENDENCIES:
+  - SideMenu
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
 
 EXTERNAL SOURCES:
@@ -15,8 +17,9 @@ CHECKOUT OPTIONS:
     :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
+  SideMenu: c5d3c3bc855b96bc2059e0b1ec346ecb54e80447
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
 
-PODFILE CHECKSUM: a584b844d823f9e98c22ea8a623d5523cfb10459
+PODFILE CHECKSUM: e18b176ea8c7f03251c53cd03945c9c44dbcfcb2
 
 COCOAPODS: 1.1.1
