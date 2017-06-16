@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Spring
 
-class MovieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class MovieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
 
     //MARK: - Properties
     
@@ -17,11 +18,22 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     var gradientLayer: CAGradientLayer! = CAGradientLayer()     //Variable for gradient background
     
+    var searchBar = UISearchBar()                               //Searchbar
+    var menuButtonItem: UIBarButtonItem?                        //Item button which represents the menu
+    var isSearching: Bool = false                               //To know if the user search
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         movieCollectionView.delegate = self
         movieCollectionView.dataSource = self
+        
+        searchBar.delegate = self
+        searchBar.searchBarStyle = UISearchBarStyle.minimal
+        searchBar.tintColor = UIColor.white
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = UIColor.white
+        menuButtonItem = navigationItem.leftBarButtonItem
     }
 
     //Display gradient
@@ -32,30 +44,34 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     //MARK: - CollectionViewDelegate
     
+    //Number of elements of the collection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 20
     }
     
+    //Number of sections of the collection
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
+    //Treatment on the cells of the collection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: MovieCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
         cell.moviePosterImageView.image = setImageFromURl(url: "https://image.tmdb.org/t/p/w500/zxkY8byBnCsXodEYpK8tmwEGXBI.jpg")
         return cell
     }
-
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK: - Actions
+    
+    //Show or hide the search bar
+    @IBAction func searchAction(_ sender: Any) {
+        if !isSearching {
+            showSearchBar()
+        }
+        else {
+            hideSearchBar()
+        }
     }
-    */
     
     //MARK: - Functions
     
@@ -78,5 +94,21 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
             }
         }
         return UIImage()
+    }
+    
+    //Show the search bar
+    func showSearchBar() {
+        isSearching = true
+        navigationItem.titleView = searchBar
+        navigationItem.setLeftBarButton(nil, animated: false)
+        searchBar.alpha = 1
+        searchBar.becomeFirstResponder()
+    }
+    
+    //Hide the search bar
+    func hideSearchBar() {
+        isSearching = false
+        navigationItem.setLeftBarButton(menuButtonItem, animated: true)
+        navigationItem.titleView = nil
     }
 }
