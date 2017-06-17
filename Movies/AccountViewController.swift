@@ -9,7 +9,7 @@
 import UIKit
 import Spring
 
-class AccountViewController: UIViewController {
+class AccountViewController: UIViewController, UITextFieldDelegate {
 
     //MARK: - Properties
     
@@ -27,12 +27,27 @@ class AccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
+        emailTextField2.delegate = self
+        usernameTextField.delegate = self
+        passwordTextField2.delegate = self
+        confirmPasswordTextField.delegate = self
     }
     
     //MARK: - TextFieldDelegate
     
+    //Dismiss keyboard when user tap on 'Done'
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     //MARK: - Actions
     
+    //Connect the user or display inscriptionView
     @IBAction func connectionAction(_ sender: Any) {
         if !connectionView.isHidden {
             //Connect the user
@@ -49,6 +64,7 @@ class AccountViewController: UIViewController {
         connectionView.animate()
     }
     
+    //Register the user or display connectionView
     @IBAction func inscriptionAction(_ sender: Any) {
         if !inscriptionView.isHidden {
             //Register the user
@@ -64,4 +80,14 @@ class AccountViewController: UIViewController {
         inscriptionView.duration = 3.0
         inscriptionView.animate()
     }
+    
+    //Dismmiss keyboard when the user tap anywhere
+    @IBAction func dismissKeyboard(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
+    @IBAction func goBackToHome(_ sender: Any) {
+        performSegue(withIdentifier: "unwindSegueToHome", sender: self)
+    }
+    //MARK: - Functions
 }

@@ -60,6 +60,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return cell
         }
     }
+    
+    //MARK: - Actions
+    
+    @IBAction func unwindFromAccount(segue:UIStoryboardSegue) {
+        
+    }
 
     //MARK: - Functions
     
