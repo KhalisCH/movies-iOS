@@ -1019,7 +1019,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7sf-5B-x0Z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="hO0-gs-qeT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="hO0-gs-qeT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
