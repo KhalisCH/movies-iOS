@@ -10,6 +10,8 @@
 		C4A3DB5D55A0E7BF36991E5B /* Pods_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2002E92013054158BFF787 /* Pods_Movies.framework */; };
 		CB8D62931EF43946006F9BC2 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D62921EF43946006F9BC2 /* MenuTableViewController.swift */; };
 		CB8D62951EF43EBF006F9BC2 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D62941EF43EBF006F9BC2 /* MenuTableViewCell.swift */; };
+		CB8D629A1EF51B57006F9BC2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D62991EF51B57006F9BC2 /* ProfileViewController.swift */; };
+		CB8D629D1EF528FB006F9BC2 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D629C1EF528FB006F9BC2 /* AccountViewController.swift */; };
 		CBA2908B1EF27324001912F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA2908A1EF27324001912F7 /* AppDelegate.swift */; };
 		CBA290901EF27324001912F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA2908E1EF27324001912F7 /* Main.storyboard */; };
 		CBA290921EF27324001912F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBA290911EF27324001912F7 /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 		C39C9C962A525E87D8A4CEF9 /* Pods-Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movies/Pods-Movies.release.xcconfig"; sourceTree = "<group>"; };
 		CB8D62921EF43946006F9BC2 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		CB8D62941EF43EBF006F9BC2 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		CB8D62991EF51B57006F9BC2 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		CB8D629C1EF528FB006F9BC2 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		CBA290871EF27324001912F7 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA2908A1EF27324001912F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBA2908F1EF27324001912F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,6 +86,15 @@
 			name = Menu;
 			sourceTree = "<group>";
 		};
+		CB8D629B1EF51B5C006F9BC2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CB8D62991EF51B57006F9BC2 /* ProfileViewController.swift */,
+				CB8D629C1EF528FB006F9BC2 /* AccountViewController.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		CBA2907E1EF27324001912F7 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +122,7 @@
 				CBA2909E1EF27920001912F7 /* LaunchScreen */,
 				CB8D62911EF43913006F9BC2 /* Menu */,
 				CBCA71AD1EF2ECD700AEF294 /* Movie */,
+				CB8D629B1EF51B5C006F9BC2 /* Profile */,
 				CBA2909C1EF274B7001912F7 /* Storyboard */,
 				CBA2909D1EF274C9001912F7 /* Xcode */,
 			);
@@ -299,6 +313,8 @@
 				CBA2908B1EF27324001912F7 /* AppDelegate.swift in Sources */,
 				CBCA71A21EF2894500AEF294 /* HomeViewController.swift in Sources */,
 				CBCA71AA1EF2C9ED00AEF294 /* MovieCollectionViewCell.swift in Sources */,
+				CB8D629D1EF528FB006F9BC2 /* AccountViewController.swift in Sources */,
+				CB8D629A1EF51B57006F9BC2 /* ProfileViewController.swift in Sources */,
 				CBCA71AC1EF2C9FA00AEF294 /* TVCollectionViewCell.swift in Sources */,
 				CBCA71AF1EF2ECF600AEF294 /* MovieViewController.swift in Sources */,
 			);
