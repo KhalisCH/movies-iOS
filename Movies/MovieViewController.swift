@@ -42,7 +42,8 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     //Display gradient
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        createGradientLayer()
+        let gradientLayer = DisplayHelper.createGradientLayer(width: self.view.bounds.width, height: gradientView.bounds.height)
+        gradientView.layer.addSublayer(gradientLayer)
     }
     
     //MARK: - CollectionViewDelegate
@@ -60,7 +61,7 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     //Treatment on the cells of the collection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: MovieCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
-        cell.moviePosterImageView.image = setImageFromURl(url: "https://image.tmdb.org/t/p/w500/zxkY8byBnCsXodEYpK8tmwEGXBI.jpg")
+        cell.moviePosterImageView.image = DisplayHelper.setImageFromURl(url: "https://image.tmdb.org/t/p/w500/zxkY8byBnCsXodEYpK8tmwEGXBI.jpg")
         return cell
     }
     
@@ -77,27 +78,6 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     //MARK: - Functions
-    
-    //Create and setting the gradient
-    func createGradientLayer() {
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: gradientView.bounds.height)
-        let firstColor = UIColor.init(hex: "#6684a3")
-        let secondColor = UIColor.init(hex: "#325b84")
-        let thirdColor = UIColor.init(hex: "#003366")
-        gradientLayer.colors = [firstColor.cgColor, secondColor.cgColor, thirdColor.cgColor]
-        gradientLayer.locations = [0.0, 0.3, 0.75]
-        gradientView.layer.addSublayer(gradientLayer)
-    }
-    
-    //Set an image from URL
-    func setImageFromURl(url: String) -> UIImage {
-        if let url = NSURL(string: url) {
-            if let data = NSData(contentsOf: url as URL) {
-                return UIImage(data: data as Data)!
-            }
-        }
-        return UIImage()
-    }
     
     //Show the search bar
     func showSearchBar() {

@@ -16,7 +16,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var movieCollectionView: UICollectionView!   //CollectionView for the movies
     @IBOutlet weak var tvCollectionView: UICollectionView!      //CollectionView for the tv shows
     
-    var gradientLayer: CAGradientLayer! = CAGradientLayer()     //Variable for gradient background
     var moviePosters: [String] = []                             //Array of posters url for movies
     
     override func viewDidLoad() {
@@ -32,7 +31,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     //Display gradient
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        createGradientLayer()
+        let gradientLayer = DisplayHelper.createGradientLayer(width: self.view.bounds.width, height: gradientView.bounds.height)
+        gradientView.layer.addSublayer(gradientLayer)
     }
     
     //MARK: - CollectionViewDelegate
@@ -51,12 +51,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView === movieCollectionView {
             let cell: MovieCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
-            cell.homeMoviePosterImageView.image = setImageFromURl(url: "https://image.tmdb.org/t/p/w500/zxkY8byBnCsXodEYpK8tmwEGXBI.jpg")
+            cell.homeMoviePosterImageView.image = DisplayHelper.setImageFromURl(url: "https://image.tmdb.org/t/p/w500/zxkY8byBnCsXodEYpK8tmwEGXBI.jpg")
             return cell
         }
         else {
             let cell: TVCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "tvCell", for: indexPath) as! TVCollectionViewCell
-            cell.tvPosterImageView.image = setImageFromURl(url: "https://image.tmdb.org/t/p/w500/mBDlsOhNOV1MkNii81aT14EYQ4S.jpg")
+            cell.tvPosterImageView.image = DisplayHelper.setImageFromURl(url: "https://image.tmdb.org/t/p/w500/mBDlsOhNOV1MkNii81aT14EYQ4S.jpg")
             return cell
         }
     }
@@ -66,28 +66,5 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     //Unwind segue from AccountViewController
     @IBAction func unwindFromAccount(segue:UIStoryboardSegue) {
         
-    }
-
-    //MARK: - Functions
-    
-    //Create and setting the gradient
-    func createGradientLayer() {
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: gradientView.bounds.height)
-        let firstColor = UIColor.init(hex: "#6684a3")
-        let secondColor = UIColor.init(hex: "#325b84")
-        let thirdColor = UIColor.init(hex: "#003366")
-        gradientLayer.colors = [firstColor.cgColor, secondColor.cgColor, thirdColor.cgColor]
-        gradientLayer.locations = [0.0, 0.3, 0.75]
-        gradientView.layer.addSublayer(gradientLayer)
-    }
-    
-    //Set an image from URL
-    func setImageFromURl(url: String) -> UIImage {
-        if let url = NSURL(string: url) {
-            if let data = NSData(contentsOf: url as URL) {
-                return UIImage(data: data as Data)!
-            }
-        }
-        return UIImage()
     }
 }
