@@ -52,16 +52,10 @@ class AccountViewController: UIViewController, UITextFieldDelegate {
         if !connectionView.isHidden {
             //Connect the user
             print("Connect")
+            dismiss(animated: true, completion: nil)
             return
         }
-        inscriptionView.animation = "fadeOut"
-        inscriptionView.duration = 3.0
-        inscriptionView.animate()
-        inscriptionView.isHidden = true
-        connectionView.isHidden = false
-        connectionView.animation = "fadeIn"
-        connectionView.duration = 3.0
-        connectionView.animate()
+        animateView(firstView: inscriptionView, secondView: connectionView)
     }
     
     //Register the user or display connectionView
@@ -69,16 +63,10 @@ class AccountViewController: UIViewController, UITextFieldDelegate {
         if !inscriptionView.isHidden {
             //Register the user
             print("Register")
+            connectionAction(sender)
             return
         }
-        connectionView.animation = "fadeOut"
-        connectionView.duration = 3.0
-        connectionView.animate()
-        connectionView.isHidden = true
-        inscriptionView.isHidden = false
-        inscriptionView.animation = "fadeIn"
-        inscriptionView.duration = 3.0
-        inscriptionView.animate()
+        animateView(firstView: connectionView, secondView: inscriptionView)
     }
     
     //Dismmiss keyboard when the user tap anywhere
@@ -86,8 +74,22 @@ class AccountViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
+    //Perform segue to go back home when item bar button is tapped
     @IBAction func goBackToHome(_ sender: Any) {
         performSegue(withIdentifier: "unwindSegueToHome", sender: self)
     }
+    
     //MARK: - Functions
+    
+    //Animate the views to show and hide
+    func animateView(firstView: SpringView, secondView: SpringView) {
+        firstView.animation = "fadeOut"
+        firstView.duration = 3.0
+        firstView.animate()
+        firstView.isHidden = true
+        secondView.isHidden = false
+        secondView.animation = "fadeIn"
+        secondView.duration = 3.0
+        secondView.animate()
+    }
 }
