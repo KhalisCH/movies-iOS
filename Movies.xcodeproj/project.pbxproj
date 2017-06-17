@@ -19,6 +19,7 @@
 		CBA290A01EF27937001912F7 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA2909F1EF27937001912F7 /* LaunchScreenViewController.swift */; };
 		CBA290A31EF27E22001912F7 /* iosLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA290A21EF27E22001912F7 /* iosLogo.png */; };
 		CBB4704F1EF53BEE009BB2DE /* DisplayHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB4704E1EF53BEE009BB2DE /* DisplayHelper.swift */; };
+		CBB470511EF544BB009BB2DE /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB470501EF544BB009BB2DE /* MovieDetailsViewController.swift */; };
 		CBCA71A21EF2894500AEF294 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA71A11EF2894500AEF294 /* HomeViewController.swift */; };
 		CBCA71A41EF2973400AEF294 /* arthur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CBCA71A31EF2973400AEF294 /* arthur.jpg */; };
 		CBCA71AA1EF2C9ED00AEF294 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA71A91EF2C9ED00AEF294 /* MovieCollectionViewCell.swift */; };
@@ -42,6 +43,7 @@
 		CBA2909F1EF27937001912F7 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		CBA290A21EF27E22001912F7 /* iosLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iosLogo.png; path = Image/iosLogo.png; sourceTree = "<group>"; };
 		CBB4704E1EF53BEE009BB2DE /* DisplayHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayHelper.swift; sourceTree = "<group>"; };
+		CBB470501EF544BB009BB2DE /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		CBCA71A11EF2894500AEF294 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CBCA71A31EF2973400AEF294 /* arthur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = arthur.jpg; path = Image/arthur.jpg; sourceTree = "<group>"; };
 		CBCA71A91EF2C9ED00AEF294 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				CBCA71AE1EF2ECF600AEF294 /* MovieViewController.swift */,
+				CBB470501EF544BB009BB2DE /* MovieDetailsViewController.swift */,
 			);
 			name = Movie;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				CBCA71A21EF2894500AEF294 /* HomeViewController.swift in Sources */,
 				CBCA71AA1EF2C9ED00AEF294 /* MovieCollectionViewCell.swift in Sources */,
 				CB8D629D1EF528FB006F9BC2 /* AccountViewController.swift in Sources */,
+				CBB470511EF544BB009BB2DE /* MovieDetailsViewController.swift in Sources */,
 				CB8D629A1EF51B57006F9BC2 /* ProfileViewController.swift in Sources */,
 				CBCA71AC1EF2C9FA00AEF294 /* TVCollectionViewCell.swift in Sources */,
 				CBCA71AF1EF2ECF600AEF294 /* MovieViewController.swift in Sources */,

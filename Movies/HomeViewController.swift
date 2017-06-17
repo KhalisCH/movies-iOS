@@ -61,6 +61,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView === movieCollectionView {
+            performSegue(withIdentifier: "movieDetailsSegue", sender: self)
+        }
+    }
+    
     //MARK: - Actions
     
     //Unwind segue from AccountViewController

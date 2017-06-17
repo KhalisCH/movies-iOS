@@ -127,8 +127,8 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="110" height="160"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="70U-kh-mJC">
-                                                                    <rect key="frame" x="0.0" y="-0.5" width="110" height="160"/>
+                                                                <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="70U-kh-mJC">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="110" height="160"/>
                                                                 </imageView>
                                                             </subviews>
                                                         </view>
@@ -244,11 +244,44 @@
                         <outlet property="gradientView" destination="xS9-rx-HUc" id="1j6-S6-7Nd"/>
                         <outlet property="movieCollectionView" destination="2Ja-VI-NAY" id="lAg-CW-qfg"/>
                         <outlet property="tvCollectionView" destination="C2b-Y9-dyh" id="Qwj-5W-0GU"/>
+                        <segue destination="7sf-5B-x0Z" kind="presentation" identifier="movieDetailsSegue" id="Gqp-5h-2Yn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vdz-LC-iln" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2654" y="-768"/>
+        </scene>
+        <!--Details-->
+        <scene sceneID="6H6-Js-qZ6">
+            <objects>
+                <viewController id="d4N-fH-DZk" customClass="MovieDetailsViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Txq-jT-ZOz"/>
+                        <viewControllerLayoutGuide type="bottom" id="iae-hK-VxJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="obY-rc-G93">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Details" id="V3f-xu-ox4">
+                        <barButtonItem key="leftBarButtonItem" image="ic_back_36pt" id="pC8-3u-anx">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="goBackToHome:" destination="d4N-fH-DZk" id="wmr-os-dr4"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="ic_empty_favorite_24pt" id="CtO-LC-vwQ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="favoriteAction:" destination="d4N-fH-DZk" id="6XZ-H1-vHV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cwK-QT-PY2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4776.8000000000002" y="-528.48575712143929"/>
         </scene>
         <!--Movies-->
         <scene sceneID="hW1-Kb-tgq">
@@ -981,10 +1014,32 @@
             </objects>
             <point key="canvasLocation" x="2653.5999999999999" y="1459.52023988006"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hqq-8K-zu8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7sf-5B-x0Z" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="hO0-gs-qeT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="d4N-fH-DZk" kind="relationship" relationship="rootViewController" id="clY-8C-CMk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IOT-Qp-k8S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3837.5999999999999" y="-528.48575712143929"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arthur.jpg" width="1500" height="694"/>
         <image name="ic_back_36pt" width="36" height="36"/>
+        <image name="ic_empty_favorite_24pt" width="24" height="24"/>
         <image name="ic_face_24pt" width="24" height="24"/>
         <image name="ic_home_36pt" width="36" height="36"/>
         <image name="ic_key_24pt" width="24" height="24"/>
