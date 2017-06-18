@@ -31,4 +31,11 @@ class DisplayHelper {
         }
         return UIImage()
     }
+    
+    class func genreLabel(label: UILabel, color: UIColor) {
+        label.layer.borderColor = color.cgColor
+        label.layer.borderWidth = 1
+        label.layer.cornerRadius = 7
+        label.layer.backgroundColor = color.cgColor
+    }
 }
