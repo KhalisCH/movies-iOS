@@ -1058,7 +1058,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4532" y="1459.52023988006"/>
+            <point key="canvasLocation" x="3481" y="2236"/>
         </scene>
         <!--Profile-->
         <scene sceneID="G5A-9v-jOd">
@@ -1142,13 +1142,51 @@
                                     <constraint firstItem="p2P-uN-dJf" firstAttribute="width" secondItem="mSr-0V-Oop" secondAttribute="width" multiplier="1:2" id="tEp-lQ-N9q"/>
                                 </constraints>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Xvd-3A-nFY">
+                                <rect key="frame" x="8" y="285" width="359" height="318"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="6" minimumInteritemSpacing="10" id="0b9-Sd-oa2">
+                                    <size key="itemSize" width="110" height="160"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="hybridCell" id="L4O-Av-edG" customClass="HybridCollectionViewCell" customModule="Movies" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="160"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="110" height="160"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vvi-mV-ne5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="110" height="160"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="Vvi-mV-ne5" firstAttribute="centerY" secondItem="L4O-Av-edG" secondAttribute="centerY" id="DnF-oG-qkm"/>
+                                            <constraint firstItem="Vvi-mV-ne5" firstAttribute="width" secondItem="L4O-Av-edG" secondAttribute="width" id="J3P-h9-AX8"/>
+                                            <constraint firstItem="Vvi-mV-ne5" firstAttribute="centerX" secondItem="L4O-Av-edG" secondAttribute="centerX" id="NAe-0a-Z3h"/>
+                                            <constraint firstItem="Vvi-mV-ne5" firstAttribute="height" secondItem="L4O-Av-edG" secondAttribute="height" id="qAZ-Wx-gln"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="posterImageView" destination="Vvi-mV-ne5" id="Ybq-5t-kbs"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="mSr-0V-Oop" firstAttribute="width" secondItem="Fxp-1l-77F" secondAttribute="width" id="0gl-Aa-m2K"/>
+                            <constraint firstItem="Xvd-3A-nFY" firstAttribute="top" secondItem="mSr-0V-Oop" secondAttribute="bottom" constant="15" id="1aM-Mc-miF"/>
+                            <constraint firstAttribute="trailing" secondItem="Xvd-3A-nFY" secondAttribute="trailing" constant="8" id="B4K-63-hA3"/>
                             <constraint firstItem="A8e-hb-8vE" firstAttribute="centerX" secondItem="Fxp-1l-77F" secondAttribute="centerX" id="Bim-AN-O1E"/>
                             <constraint firstItem="mSr-0V-Oop" firstAttribute="top" secondItem="I7m-aR-Baw" secondAttribute="bottom" constant="25" id="F8c-3M-NPO"/>
+                            <constraint firstItem="OfT-1v-KnQ" firstAttribute="top" secondItem="Xvd-3A-nFY" secondAttribute="bottom" constant="15" id="GHY-cA-DYb"/>
                             <constraint firstItem="I7m-aR-Baw" firstAttribute="top" secondItem="A8e-hb-8vE" secondAttribute="bottom" id="Gtn-he-eUa"/>
+                            <constraint firstItem="Xvd-3A-nFY" firstAttribute="leading" secondItem="Fxp-1l-77F" secondAttribute="leading" constant="8" id="QlJ-l4-mjw"/>
                             <constraint firstItem="I7m-aR-Baw" firstAttribute="centerX" secondItem="Fxp-1l-77F" secondAttribute="centerX" id="VCu-ww-bGd"/>
                             <constraint firstItem="mSr-0V-Oop" firstAttribute="centerX" secondItem="Fxp-1l-77F" secondAttribute="centerX" id="jPb-Lo-Rng"/>
                             <constraint firstItem="A8e-hb-8vE" firstAttribute="top" secondItem="eMb-VM-zrl" secondAttribute="bottom" constant="40" id="mG5-wh-wBN"/>
@@ -1163,6 +1201,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="collectionView" destination="Xvd-3A-nFY" id="CTQ-UL-USj"/>
                         <outlet property="myMovieButton" destination="zp4-AF-Qm1" id="bZW-8Y-kRl"/>
                         <outlet property="myMovieView" destination="p2P-uN-dJf" id="zqu-MD-qME"/>
                         <outlet property="myTvShowButton" destination="sDT-yY-aSz" id="zrc-cN-D5R"/>
@@ -1307,7 +1346,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6XS-Tx-m5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3592.8000000000002" y="1459.52023988006"/>
+            <point key="canvasLocation" x="2654" y="2236"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hqq-8K-zu8">
