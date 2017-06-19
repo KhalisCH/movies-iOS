@@ -16,8 +16,10 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var genreLabel: PaddingLabel!        //Label for the genre
     @IBOutlet weak var genreLabel2: PaddingLabel!       //Label for the genre
     @IBOutlet weak var genreLabel3: PaddingLabel!       //Label for the genre
+    @IBOutlet weak var navigationBar: UINavigationItem!
     
     var isFavorite: Bool = false                        //To know if this movie is a favorite or not
+    var movieId: Int? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +33,14 @@ class MovieDetailsViewController: UIViewController {
         
         let color3 = UIColor(red: 51/255, green: 56/255, blue: 118/255, alpha: 1.0)
         DisplayHelper.genreLabel(label: genreLabel3, color: color3)
+        
+        print(movieId!)
     }
     
     //MARK: - Actions
     
     //Dismiss the view
-    @IBAction func goBackToHome(_ sender: Any) {
+    @IBAction func goBackAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
@@ -44,16 +48,16 @@ class MovieDetailsViewController: UIViewController {
     @IBAction func favoriteAction(_ sender: Any) {
         if isFavorite {
             isFavorite = false
-            navigationItem.rightBarButtonItem?.image = UIImage(named: "ic_empty_favorite_24pt")
-            navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+            navigationBar.rightBarButtonItem?.image = UIImage(named: "ic_empty_favorite_24pt")
+            navigationBar.rightBarButtonItem?.tintColor = UIColor.white
         }
         else {
             isFavorite = true
-            navigationItem.rightBarButtonItem?.image = UIImage(named: "ic_plain_favorite_24pt")
-            navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 212/255, green: 67/255, blue: 74/255, alpha: 1.0)
+            navigationBar.rightBarButtonItem?.image = UIImage(named: "ic_plain_favorite_24pt")
+            navigationBar.rightBarButtonItem?.tintColor = UIColor(red: 212/255, green: 67/255, blue: 74/255, alpha: 1.0)
         }
     }
-    
+
     //When user tap on the play button, launch youtube with the video
     @IBAction func playAction(_ sender: Any) {
         let youtubeId = "jIM4-HLtUM0"

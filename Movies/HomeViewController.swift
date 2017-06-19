@@ -18,8 +18,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var movieCollectionView: UICollectionView!   //CollectionView for the movies
     @IBOutlet weak var tvCollectionView: UICollectionView!      //CollectionView for the tv shows
     
-    var movieData: [JSON] = []                                  //Array of posters url and id of movies
+    var movieData: [JSON] = []                                  //Array of posters url andvar of movies
     var tvShowData: [JSON] = []                                 //Array of posters url and id of tv shows
+    var movieSelected: Int? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,16 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewWillAppear(animated)
         let gradientLayer = DisplayHelper.createGradientLayer(width: self.view.bounds.width, height: gradientView.bounds.height)
         gradientView.layer.addSublayer(gradientLayer)
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "movieDetailsSegue" {
+            let controller = segue.destination as! MovieDetailsViewController
+            controller.movieId = movieSelected
+        }
     }
     
     //MARK: - CollectionViewDelegate
@@ -71,8 +82,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    //Perform segue when user tap on a collection cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView === movieCollectionView {
+            movieSelected = movieData[indexPath.row]["id"].intValue
             performSegue(withIdentifier: "movieDetailsSegue", sender: self)
         }
     }
@@ -108,7 +121,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 return
             }
             let json = JSON(response.result.value!)
-            print(json)
             for i in 0..<10 {
                 let obj: JSON = ["id": json["results"][i]["id"].intValue, "posterURL": "https://image.tmdb.org/t/p/w500" + json["results"][i]["poster_path"].stringValue]
                 self.tvShowData.append(obj)
