@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -16,10 +18,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var movieCollectionView: UICollectionView!   //CollectionView for the movies
     @IBOutlet weak var tvCollectionView: UICollectionView!      //CollectionView for the tv shows
     
-    var moviePosters: [String] = []                             //Array of posters url for movies
+    var movieData: [JSON] = []                                  //Array of posters url and id of movies
+    var tvShowData: [JSON] = []                                 //Array of posters url and id of tv shows
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getUpcomingMovies()
+        getNowPlayingTvShow()
         
         movieCollectionView.delegate = self
         movieCollectionView.dataSource = self
@@ -51,12 +57,16 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView === movieCollectionView {
             let cell: MovieCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
-            cell.homeMoviePosterImageView.image = DisplayHelper.setImageFromURl(url: "https://image.tmdb.org/t/p/w500/zxkY8byBnCsXodEYpK8tmwEGXBI.jpg")
+            if !movieData.isEmpty {
+                cell.homeMoviePosterImageView.image = DisplayHelper.setImageFromURl(url: movieData[indexPath.row]["posterURL"].stringValue)
+            }
             return cell
         }
         else {
             let cell: TVCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "tvCell", for: indexPath) as! TVCollectionViewCell
-            cell.tvPosterImageView.image = DisplayHelper.setImageFromURl(url: "https://image.tmdb.org/t/p/w500/mBDlsOhNOV1MkNii81aT14EYQ4S.jpg")
+            if !tvShowData.isEmpty {
+                cell.tvPosterImageView.image = DisplayHelper.setImageFromURl(url: tvShowData[indexPath.row]["posterURL"].stringValue)
+            }
             return cell
         }
     }
@@ -72,5 +82,38 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     //Unwind segue from AccountViewController
     @IBAction func unwindFromAccount(segue:UIStoryboardSegue) {
         
+    }
+    
+    //MARK: - Functions
+    
+    func getUpcomingMovies() {
+        Alamofire.request(MovieDatabaseRouter.upcomingMovie(language: "en-US", page: 1, region: "US")).responseJSON{ response in
+            guard response.result.isSuccess else {
+                print("Error while fetching upcoming movies on Home: \(response.result.error)")
+                return
+            }
+            let json = JSON(response.result.value!)
+            for i in 0..<10 {
+                let obj: JSON = ["id": json["results"][i]["id"].intValue, "posterURL": "https://image.tmdb.org/t/p/w500" + json["results"][i]["poster_path"].stringValue]
+                self.movieData.append(obj)
+            }
+            self.movieCollectionView.reloadData()
+        }
+    }
+    
+    func getNowPlayingTvShow() {
+        Alamofire.request(MovieDatabaseRouter.nowPlayingTvShow(language: "en-US", page: 1)).responseJSON{ response in
+            guard response.result.isSuccess else {
+                print("Error while fetching now playing tv show son Home: \(response.result.error)")
+                return
+            }
+            let json = JSON(response.result.value!)
+            print(json)
+            for i in 0..<10 {
+                let obj: JSON = ["id": json["results"][i]["id"].intValue, "posterURL": "https://image.tmdb.org/t/p/w500" + json["results"][i]["poster_path"].stringValue]
+                self.tvShowData.append(obj)
+            }
+            self.tvCollectionView.reloadData()
+        }
     }
 }

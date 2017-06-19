@@ -12,7 +12,6 @@ import Alamofire
 public enum MovieDatabaseRouter: URLRequestConvertible {
     /*** Base URL and API key ***/
     static let baseURLPath = "https://api.themoviedb.org"
-    static let authenticationToken = "332db8037d480cad9ce169f33c51f34a"
     
     /*** Movie ***/
     case popularMovie(language: String, page: Int)                  //Get the popular movie
@@ -82,19 +81,19 @@ public enum MovieDatabaseRouter: URLRequestConvertible {
         let parameters: [String: Any] = {
             switch self {
             case .popularMovie(let language, let page), .topRatedMovie(let language, let page), .nowPlayingMovie(let language, let page):
-                return ["language": language, "page": page]
+                return ["api_key": "332db8037d480cad9ce169f33c51f34a", "language": language, "page": page]
             case .upcomingMovie(let language, let page, let region):
-                return ["language": language, "page": page, "region": region]
+                return ["api_key": "332db8037d480cad9ce169f33c51f34a", "language": language, "page": page, "region": region]
             case .movieDetails(let movieID, let language):
-                return ["movie_id": movieID, "language": language]
+                return ["api_key": "332db8037d480cad9ce169f33c51f34a", "movie_id": movieID, "language": language]
             case .movieListGenre(let language), .tvShowListGenre(let language):
-                return ["language": language]
+                return ["api_key": "332db8037d480cad9ce169f33c51f34a", "language": language]
             case .movieFilterByGenre(let genreID, let language, let page), .tvShowFilterByGenre(let genreID, let language, let page):
-                return ["genre_id": genreID, "language": language, "page": page]
+                return ["api_key": "332db8037d480cad9ce169f33c51f34a", "genre_id": genreID, "language": language, "page": page]
             case .popularTvShow(let language, let page), .topRatedTvShow(let language, let page), .nowPlayingTvShow(let language, let page):
-                return ["language": language, "page": page]
+                return ["api_key": "332db8037d480cad9ce169f33c51f34a", "language": language, "page": page]
             case .tvShowDetails(let tvID, let language):
-                return ["tv_id": tvID, "language": language]
+                return ["api_key": "332db8037d480cad9ce169f33c51f34a", "tv_id": tvID, "language": language]
             default:
                 return [:]
             }
@@ -103,7 +102,6 @@ public enum MovieDatabaseRouter: URLRequestConvertible {
         let url = try MovieDatabaseRouter.baseURLPath.asURL()
         var request = URLRequest(url: url.appendingPathComponent(path))
         request.httpMethod = method.rawValue
-        request.setValue(MovieDatabaseRouter.authenticationToken, forHTTPHeaderField: "Authorization")
         request.timeoutInterval = TimeInterval(10 * 1000)
         return try URLEncoding.default.encode(request, with: parameters)
     }
