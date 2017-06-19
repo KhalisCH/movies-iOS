@@ -31,6 +31,7 @@ class MovieDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getVideo(id: movieId!)
         getDetails(id: movieId!)
         
         let color = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1.0)
@@ -60,7 +61,8 @@ class MovieDetailsViewController: UIViewController {
 
     //When user tap on the play button, launch youtube with the video
     @IBAction func playAction(_ sender: Any) {
-        if !youtubeId.isEmpty {
+        print("button", youtubeId)
+        if youtubeId.isEmpty {
             return
         }
         var youtubeUrl = NSURL(string:"youtube://\(youtubeId)")!
@@ -75,7 +77,6 @@ class MovieDetailsViewController: UIViewController {
     //MARK: - Functions
     
     func getDetails(id: Int) {
-        print(id)
         Alamofire.request(MovieDatabaseRouter.movieDetails(id: id, language: "en-US")).responseJSON{ response in
             guard response.result.isSuccess else {
                 print("Error while fetching movie details on Details: \(response.result.error)")
@@ -86,9 +87,21 @@ class MovieDetailsViewController: UIViewController {
         }
     }
     
+    func getVideo(id: Int) {
+        Alamofire.request(MovieDatabaseRouter.movieTrailer(id: id, language: "en-US")).responseJSON{ response in
+            guard response.result.isSuccess else {
+                print("Error while fetching movie details on Details: \(response.result.error)")
+                return
+            }
+            let json = JSON(response.result.value!)
+            let trailer = json["results"].arrayValue.filter( { return $0["name"] == "Official Trailer" } )
+            self.youtubeId = trailer[0]["key"].stringValue
+            print("Async", self.youtubeId)
+        }
+    }
+    
     func updateDetails(details: JSON) {
-        print(details)
-        if !details["video"].boolValue {
+        if self.youtubeId.isEmpty {
             playButton.isHidden = true
         }
         if details["backdrop_path"].stringValue.isEmpty {
