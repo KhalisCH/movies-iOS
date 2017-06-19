@@ -55,8 +55,8 @@ public enum MovieDatabaseRouter: URLRequestConvertible {
             return "/3/movie/now_playing"
         case .movieListGenre:
             return "/3/genre/movie/list"
-        case .movieDetails:
-            return "/3/movie"
+        case .movieDetails(let id, _):
+            return "/3/movie/" + String(id)
         case .movieFilterByGenre:
             return "/3/genre"
         case .popularTvShow:
@@ -84,8 +84,8 @@ public enum MovieDatabaseRouter: URLRequestConvertible {
                 return ["api_key": "332db8037d480cad9ce169f33c51f34a", "language": language, "page": page]
             case .upcomingMovie(let language, let page, let region):
                 return ["api_key": "332db8037d480cad9ce169f33c51f34a", "language": language, "page": page, "region": region]
-            case .movieDetails(let movieID, let language):
-                return ["api_key": "332db8037d480cad9ce169f33c51f34a", "movie_id": movieID, "language": language]
+            case .movieDetails(let language):
+                return ["api_key": "332db8037d480cad9ce169f33c51f34a", "language": language]
             case .movieListGenre(let language), .tvShowListGenre(let language):
                 return ["api_key": "332db8037d480cad9ce169f33c51f34a", "language": language]
             case .movieFilterByGenre(let genreID, let language, let page), .tvShowFilterByGenre(let genreID, let language, let page):

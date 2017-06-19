@@ -266,8 +266,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJ9-HN-Bdw">
                                 <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bXv-bn-jvC">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bXv-bn-jvC">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LXI-2U-0yS">
                                                 <rect key="frame" x="-0.5" y="0.0" width="375" height="250"/>
@@ -358,63 +358,21 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKJ-v7-YdN">
-                                                <rect key="frame" x="16" y="391" width="343" height="159.5"/>
+                                                <rect key="frame" x="16" y="396" width="343" height="159.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Science fiction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="L5u-oB-eX9" customClass="PaddingLabel" customModule="Movies" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="356" width="83" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jxe-Z0-eVb" customClass="PaddingLabel" customModule="Movies" customModuleProvider="target">
+                                                <rect key="frame" x="172" y="356" width="31" height="25"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="Wdx-JN-hvK"/>
+                                                    <constraint firstAttribute="height" constant="25" id="lV5-EA-jmw"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0B5-JQ-g78" customClass="PaddingLabel" customModule="Movies" customModuleProvider="target">
-                                                <rect key="frame" x="101" y="356" width="36" height="20"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="L5U-Mz-wzz"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aventure" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DMv-ej-7ip" customClass="PaddingLabel" customModule="Movies" customModuleProvider="target">
-                                                <rect key="frame" x="147" y="356" width="50" height="20"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="jUi-ha-TDw"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -422,14 +380,13 @@
                                             <constraint firstItem="Wk3-ac-IqM" firstAttribute="centerX" secondItem="bXv-bn-jvC" secondAttribute="centerX" id="0Fd-aB-tZy"/>
                                             <constraint firstItem="Vgj-EK-7jD" firstAttribute="centerX" secondItem="LXI-2U-0yS" secondAttribute="centerX" id="1OO-ce-hoW"/>
                                             <constraint firstAttribute="trailing" secondItem="RU4-HM-Bmi" secondAttribute="trailing" constant="8" id="342-qH-u27"/>
+                                            <constraint firstItem="jxe-Z0-eVb" firstAttribute="top" secondItem="Wk3-ac-IqM" secondAttribute="bottom" constant="15" id="7VW-Qb-ddp"/>
                                             <constraint firstItem="Bs1-bu-wc8" firstAttribute="centerY" secondItem="huS-Qk-Erc" secondAttribute="centerY" id="ADs-3t-aTt"/>
                                             <constraint firstAttribute="trailing" secondItem="QOd-B2-d2X" secondAttribute="trailing" constant="16" id="EAs-JL-cGr"/>
                                             <constraint firstItem="Bs1-bu-wc8" firstAttribute="leading" secondItem="huS-Qk-Erc" secondAttribute="trailing" constant="8" id="Ep1-c9-JTg"/>
                                             <constraint firstItem="zGG-Tr-qrg" firstAttribute="leading" secondItem="Bs1-bu-wc8" secondAttribute="trailing" constant="5" id="Fcu-4e-20J"/>
                                             <constraint firstItem="GUU-uW-7lm" firstAttribute="centerX" secondItem="T8w-M8-2EG" secondAttribute="centerX" id="Gnd-UM-l4r"/>
                                             <constraint firstItem="RU4-HM-Bmi" firstAttribute="leading" secondItem="bXv-bn-jvC" secondAttribute="leading" constant="8" id="Hhm-8h-dGd"/>
-                                            <constraint firstItem="DMv-ej-7ip" firstAttribute="top" secondItem="Wk3-ac-IqM" secondAttribute="bottom" constant="15" id="KTh-6C-FjH"/>
-                                            <constraint firstItem="0B5-JQ-g78" firstAttribute="top" secondItem="Wk3-ac-IqM" secondAttribute="bottom" constant="15" id="Mva-P3-jyr"/>
                                             <constraint firstItem="A8e-2T-CGG" firstAttribute="top" secondItem="ZCF-Nt-LVS" secondAttribute="bottom" constant="8" id="Nz3-ba-cTe"/>
                                             <constraint firstItem="huS-Qk-Erc" firstAttribute="leading" secondItem="bXv-bn-jvC" secondAttribute="leading" constant="16" id="OBE-7z-MgL"/>
                                             <constraint firstItem="RU4-HM-Bmi" firstAttribute="top" secondItem="oVA-yM-L0R" secondAttribute="bottom" constant="10" id="Pbc-Ot-Ro1"/>
@@ -447,21 +404,18 @@
                                             <constraint firstItem="LXI-2U-0yS" firstAttribute="centerX" secondItem="bXv-bn-jvC" secondAttribute="centerX" id="iCc-T5-O2X"/>
                                             <constraint firstItem="T8w-M8-2EG" firstAttribute="width" secondItem="bXv-bn-jvC" secondAttribute="width" id="mXX-vG-mr1"/>
                                             <constraint firstItem="T8w-M8-2EG" firstAttribute="centerX" secondItem="bXv-bn-jvC" secondAttribute="centerX" id="myh-si-Jso"/>
-                                            <constraint firstItem="DMv-ej-7ip" firstAttribute="leading" secondItem="0B5-JQ-g78" secondAttribute="trailing" constant="10" id="nKb-5Y-aIF"/>
                                             <constraint firstItem="ZCF-Nt-LVS" firstAttribute="leading" secondItem="bXv-bn-jvC" secondAttribute="leading" constant="8" id="na7-k2-M0m"/>
+                                            <constraint firstItem="cKJ-v7-YdN" firstAttribute="top" secondItem="jxe-Z0-eVb" secondAttribute="bottom" constant="15" id="nzG-rB-2Gc"/>
                                             <constraint firstItem="T8w-M8-2EG" firstAttribute="bottom" secondItem="LXI-2U-0yS" secondAttribute="bottom" id="oPf-gs-lmH"/>
                                             <constraint firstItem="Bs1-bu-wc8" firstAttribute="top" secondItem="ZCF-Nt-LVS" secondAttribute="bottom" constant="8" id="oQr-Sg-QH2"/>
                                             <constraint firstItem="QOd-B2-d2X" firstAttribute="top" secondItem="ZCF-Nt-LVS" secondAttribute="bottom" constant="8" id="ouk-3B-vVp"/>
                                             <constraint firstItem="LXI-2U-0yS" firstAttribute="top" secondItem="bXv-bn-jvC" secondAttribute="top" id="p26-J5-JE9"/>
                                             <constraint firstItem="Vgj-EK-7jD" firstAttribute="centerY" secondItem="LXI-2U-0yS" secondAttribute="centerY" id="pqG-d2-135"/>
-                                            <constraint firstItem="L5u-oB-eX9" firstAttribute="leading" secondItem="bXv-bn-jvC" secondAttribute="leading" constant="8" id="rMB-if-nDc"/>
-                                            <constraint firstItem="cKJ-v7-YdN" firstAttribute="top" secondItem="Wk3-ac-IqM" secondAttribute="bottom" constant="50" id="rze-SE-hs8"/>
                                             <constraint firstItem="LXI-2U-0yS" firstAttribute="width" secondItem="bXv-bn-jvC" secondAttribute="width" id="sgi-7W-mDP"/>
                                             <constraint firstItem="oVA-yM-L0R" firstAttribute="leading" secondItem="A8e-2T-CGG" secondAttribute="trailing" constant="8" id="tZS-ey-zkF"/>
-                                            <constraint firstItem="L5u-oB-eX9" firstAttribute="top" secondItem="Wk3-ac-IqM" secondAttribute="bottom" constant="15" id="te0-Bt-zgk"/>
-                                            <constraint firstItem="0B5-JQ-g78" firstAttribute="leading" secondItem="L5u-oB-eX9" secondAttribute="trailing" constant="10" id="xU5-zG-o8m"/>
                                             <constraint firstItem="ZCF-Nt-LVS" firstAttribute="top" secondItem="T8w-M8-2EG" secondAttribute="bottom" constant="10" id="yRj-UX-fAD"/>
                                             <constraint firstAttribute="trailing" secondItem="cKJ-v7-YdN" secondAttribute="trailing" constant="16" id="yte-2J-o3r"/>
+                                            <constraint firstItem="jxe-Z0-eVb" firstAttribute="centerX" secondItem="bXv-bn-jvC" secondAttribute="centerX" id="zcO-z6-MwE"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -512,11 +466,15 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="genreLabel" destination="L5u-oB-eX9" id="vkA-FP-MDl"/>
-                        <outlet property="genreLabel2" destination="0B5-JQ-g78" id="HT7-x2-M01"/>
-                        <outlet property="genreLabel3" destination="DMv-ej-7ip" id="1Ff-66-Sxn"/>
+                        <outlet property="dateLabel" destination="Wk3-ac-IqM" id="Rc3-hJ-yI6"/>
+                        <outlet property="genreLabel" destination="jxe-Z0-eVb" id="bAJ-Oj-tRh"/>
                         <outlet property="navigationBar" destination="pl0-GM-FC4" id="7Q0-fr-cxT"/>
+                        <outlet property="overviewTextView" destination="cKJ-v7-YdN" id="z3Y-5k-Q1i"/>
+                        <outlet property="playButton" destination="Vgj-EK-7jD" id="Jli-DX-ZbF"/>
+                        <outlet property="popularityLabel" destination="QOd-B2-d2X" id="sft-Zv-8fP"/>
+                        <outlet property="titleLabel" destination="GUU-uW-7lm" id="tUo-4Q-tfP"/>
                         <outlet property="videoImageView" destination="LXI-2U-0yS" id="xDS-vE-xxV"/>
+                        <outlet property="voteAverageLabel" destination="zGG-Tr-qrg" id="fkP-xE-EfA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cwK-QT-PY2" userLabel="First Responder" sceneMemberID="firstResponder"/>

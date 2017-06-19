@@ -20,7 +20,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     var movieData: [JSON] = []                                  //Array of posters url andvar of movies
     var tvShowData: [JSON] = []                                 //Array of posters url and id of tv shows
-    var movieSelected: Int? = nil
+    var movieSelected: Int? = nil                               //Id of the selected movie
+    
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +101,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     //MARK: - Functions
     
+    //Get upcoming movies and push information in the movieData array
     func getUpcomingMovies() {
         Alamofire.request(MovieDatabaseRouter.upcomingMovie(language: "en-US", page: 1, region: "US")).responseJSON{ response in
             guard response.result.isSuccess else {
@@ -114,6 +117,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    //Get now playing TV shows and push information in the tvShowData array
     func getNowPlayingTvShow() {
         Alamofire.request(MovieDatabaseRouter.nowPlayingTvShow(language: "en-US", page: 1)).responseJSON{ response in
             guard response.result.isSuccess else {
