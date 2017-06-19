@@ -9,6 +9,8 @@
 import UIKit
 import SideMenu
 import Spring
+import Alamofire
+import SwiftyJSON
 
 class MovieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
 
@@ -39,8 +41,14 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     var isUpcoming: Bool = false                                //To know if upcoming is selected
     var isTopRated: Bool = false                                //To know if top rated is selected
     
+    /*** Id variable and data ***/
+    var movieSelected: Int? = nil                               //Id of the selected movie
+    var movieData: [JSON] = []                                  //Array of posters url andvar of movies
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getMovies(request: MovieDatabaseRouter.popularMovie(language: "en-US", page: 1))
         
         movieCollectionView.delegate = self
         movieCollectionView.dataSource = self
@@ -63,11 +71,22 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
         gradientView.layer.addSublayer(gradientLayer)
     }
     
+    // MARK: - Navigation
+    
+    //Pass infromation to the destination view controller before perform segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "movieDetailsSegue" {
+            let controller = segue.destination as! MovieDetailsViewController
+            controller.movieId = movieSelected
+        }
+    }
+    
     //MARK: - CollectionViewDelegate
     
     //Number of elements of the collection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return movieData.count
     }
     
     //Number of sections of the collection
@@ -78,14 +97,23 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     //Treatment on the cells of the collection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: MovieCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
-        cell.moviePosterImageView.image = DisplayHelper.setImageFromURl(url: "https://image.tmdb.org/t/p/w500/zxkY8byBnCsXodEYpK8tmwEGXBI.jpg")
+        cell.moviePosterImageView.image = DisplayHelper.setImageFromURl(url: movieData[indexPath.row]["posterURL"].stringValue)
         return cell
+    }
+    
+    //Perform segue when user tap on a collection cell
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView === movieCollectionView {
+            movieSelected = movieData[indexPath.row]["id"].intValue
+            performSegue(withIdentifier: "movieDetailsSegue", sender: self)
+        }
     }
     
     //MARK: - Actions
     
     //Selected Popular tab and display all populars movies
     @IBAction func popularAction(_ sender: Any) {
+        getMovies(request: MovieDatabaseRouter.popularMovie(language: "en-US", page: 1))
         isPopular = true
         
         popularButton.setTitleColor(UIColor.white, for: .normal)
@@ -104,6 +132,7 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     //Selected Upcoming tab and display all upcommings movies
     @IBAction func upcomingAction(_ sender: Any) {
+        getMovies(request: MovieDatabaseRouter.nowPlayingMovie(language: "en-US", page: 1))
         isUpcoming = true
         
         upcomingButton.setTitleColor(UIColor.white, for: .normal)
@@ -122,6 +151,7 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     //Selected Top Rated tab and display all top rated movies
     @IBAction func topRatedAction(_ sender: Any) {
+        getMovies(request: MovieDatabaseRouter.topRatedMovie(language: "en-US", page: 1))
         isTopRated = true
         
         topRatedButton.setTitleColor(UIColor.white, for: .normal)
@@ -137,6 +167,7 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         animateShowView(view: topRatedView)
     }
+
     
     //Show or hide the search bar
     @IBAction func searchAction(_ sender: Any) {
@@ -150,6 +181,26 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     //MARK: - Functions
     
+    /*** HTTP Request ***/
+    //Get popular or now playing or top rated movies and push information in the movieData array
+    func getMovies(request: MovieDatabaseRouter) {
+        Alamofire.request(request).responseJSON{ response in
+            guard response.result.isSuccess else {
+                print("Error while fetching upcoming movies on Home: \(response.result.error)")
+                return
+            }
+            let json = JSON(response.result.value!)
+            print(json)
+            self.movieData = []
+            for i in 0..<20 {
+                let obj: JSON = ["id": json["results"][i]["id"].intValue, "posterURL": "https://image.tmdb.org/t/p/w500" + json["results"][i]["poster_path"].stringValue]
+                self.movieData.append(obj)
+            }
+            self.movieCollectionView.reloadData()
+        }
+    }
+    
+    /*** Animations ***/
     //Animation for the view of tab needed to be hidden
     func animateHiddenView(target: inout Bool, view: SpringView) {
         target = false

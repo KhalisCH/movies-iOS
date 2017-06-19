@@ -46,6 +46,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // MARK: - Navigation
     
+    //Pass infromation to the destination view controller before perform segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "movieDetailsSegue" {

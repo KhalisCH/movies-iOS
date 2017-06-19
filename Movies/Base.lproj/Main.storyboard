@@ -479,7 +479,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cwK-QT-PY2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3661.5999999999999" y="-769.56521739130437"/>
+            <point key="canvasLocation" x="3652" y="-746"/>
         </scene>
         <!--Movies-->
         <scene sceneID="hW1-Kb-tgq">
@@ -540,7 +540,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCp-W4-6yJ">
                                         <rect key="frame" x="125" y="0.0" width="125" height="50"/>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="14"/>
-                                        <state key="normal" title="Upcoming">
+                                        <state key="normal" title="Recent">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -553,6 +553,9 @@
                                         <state key="normal" title="Top Rated">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="topRatedAction:" destination="0lD-6b-75z" eventType="touchUpInside" id="rOK-Ok-bJD"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -660,11 +663,12 @@
                         <outlet property="topRatedView" destination="k63-lF-2l9" id="dQg-iI-urk"/>
                         <outlet property="upcomingButton" destination="BCp-W4-6yJ" id="MLV-P1-9eW"/>
                         <outlet property="upcomingView" destination="SRJ-c4-IlG" id="3WX-Oy-f8z"/>
+                        <segue destination="d4N-fH-DZk" kind="presentation" identifier="movieDetailsSegue" id="HEF-c8-B9Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8r-X6-tAV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2653.5999999999999" y="25.637181409295355"/>
+            <point key="canvasLocation" x="2679" y="26"/>
         </scene>
         <!--TV Shows-->
         <scene sceneID="9bb-d4-RYz">
@@ -1436,6 +1440,7 @@
         <image name="iosLogo.png" width="500" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="HEF-c8-B9Y"/>
         <segue reference="c0Q-P1-Rtl"/>
     </inferredMetricsTieBreakers>
 </document>
