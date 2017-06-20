@@ -10,6 +10,8 @@
 		C4A3DB5D55A0E7BF36991E5B /* Pods_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2002E92013054158BFF787 /* Pods_Movies.framework */; };
 		CB645B441EF6BFF4001D2CB8 /* HybridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB645B431EF6BFF4001D2CB8 /* HybridCollectionViewCell.swift */; };
 		CB645B471EF7D638001D2CB8 /* MovieDatabaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB645B461EF7D638001D2CB8 /* MovieDatabaseRouter.swift */; };
+		CB645B4A1EF824B1001D2CB8 /* TVShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB645B491EF824B1001D2CB8 /* TVShowViewController.swift */; };
+		CB645B4C1EF92331001D2CB8 /* TVShowDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB645B4B1EF92331001D2CB8 /* TVShowDetailsViewController.swift */; };
 		CB8D62931EF43946006F9BC2 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D62921EF43946006F9BC2 /* MenuTableViewController.swift */; };
 		CB8D62951EF43EBF006F9BC2 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D62941EF43EBF006F9BC2 /* MenuTableViewCell.swift */; };
 		CB8D629A1EF51B57006F9BC2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D62991EF51B57006F9BC2 /* ProfileViewController.swift */; };
@@ -34,6 +36,8 @@
 		C39C9C962A525E87D8A4CEF9 /* Pods-Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movies/Pods-Movies.release.xcconfig"; sourceTree = "<group>"; };
 		CB645B431EF6BFF4001D2CB8 /* HybridCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HybridCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB645B461EF7D638001D2CB8 /* MovieDatabaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDatabaseRouter.swift; sourceTree = "<group>"; };
+		CB645B491EF824B1001D2CB8 /* TVShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowViewController.swift; sourceTree = "<group>"; };
+		CB645B4B1EF92331001D2CB8 /* TVShowDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowDetailsViewController.swift; sourceTree = "<group>"; };
 		CB8D62921EF43946006F9BC2 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		CB8D62941EF43EBF006F9BC2 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		CB8D62991EF51B57006F9BC2 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +97,15 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		CB645B481EF82490001D2CB8 /* TV Show */ = {
+			isa = PBXGroup;
+			children = (
+				CB645B4B1EF92331001D2CB8 /* TVShowDetailsViewController.swift */,
+				CB645B491EF824B1001D2CB8 /* TVShowViewController.swift */,
+			);
+			name = "TV Show";
+			sourceTree = "<group>";
+		};
 		CB8D62911EF43913006F9BC2 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +155,7 @@
 				CBCA71AD1EF2ECD700AEF294 /* Movie */,
 				CB8D629B1EF51B5C006F9BC2 /* Profile */,
 				CBA2909C1EF274B7001912F7 /* Storyboard */,
+				CB645B481EF82490001D2CB8 /* TV Show */,
 				CB645B451EF7D626001D2CB8 /* Utils */,
 				CBA2909D1EF274C9001912F7 /* Xcode */,
 			);
@@ -337,7 +351,9 @@
 			files = (
 				CBA290A01EF27937001912F7 /* LaunchScreenViewController.swift in Sources */,
 				CBB4704F1EF53BEE009BB2DE /* DisplayHelper.swift in Sources */,
+				CB645B4A1EF824B1001D2CB8 /* TVShowViewController.swift in Sources */,
 				CB8D62931EF43946006F9BC2 /* MenuTableViewController.swift in Sources */,
+				CB645B4C1EF92331001D2CB8 /* TVShowDetailsViewController.swift in Sources */,
 				CB8D62951EF43EBF006F9BC2 /* MenuTableViewCell.swift in Sources */,
 				CBA2908B1EF27324001912F7 /* AppDelegate.swift in Sources */,
 				CBCA71A21EF2894500AEF294 /* HomeViewController.swift in Sources */,

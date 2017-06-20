@@ -21,6 +21,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var movieData: [JSON] = []                                  //Array of posters url andvar of movies
     var tvShowData: [JSON] = []                                 //Array of posters url and id of tv shows
     var movieSelected: Int? = nil                               //Id of the selected movie
+    var tvShowSelected: Int? = nil                              //Id of the selected TV show
     
     // MARK: - View Life Cycle
     
@@ -52,6 +53,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if segue.identifier == "movieDetailsSegue" {
             let controller = segue.destination as! MovieDetailsViewController
             controller.movieId = movieSelected
+        }
+        else {
+            let controller = segue.destination as! TVShowDetailsViewController
+            controller.tvShowId = tvShowSelected
         }
     }
     
@@ -90,6 +95,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if collectionView === movieCollectionView {
             movieSelected = movieData[indexPath.row]["id"].intValue
             performSegue(withIdentifier: "movieDetailsSegue", sender: self)
+        }
+        else {
+            tvShowSelected = tvShowData[indexPath.row]["id"].intValue
+            performSegue(withIdentifier: "tvShowDetailsSegue", sender: self)
         }
     }
     

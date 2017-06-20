@@ -1,8 +1,8 @@
 //
-//  MovieDetailsViewController.swift
+//  TVShowDetailsViewController.swift
 //  Movies
 //
-//  Created by Khalis on 17/06/2017.
+//  Created by Khalis on 20/06/2017.
 //  Copyright © 2017 Khalis. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class MovieDetailsViewController: UIViewController {
+class TVShowDetailsViewController: UIViewController {
 
     //MARK: - Properties
     @IBOutlet weak var playButton: UIButton!
@@ -18,6 +18,9 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var voteAverageLabel: UILabel!
     @IBOutlet weak var popularityLabel: UILabel!
+    @IBOutlet weak var seasonLabel: PaddingLabel!
+    @IBOutlet weak var statutLabel: PaddingLabel!
+    @IBOutlet weak var episodeLabel: PaddingLabel!
     @IBOutlet weak var dateLabel: UILabel!
     
     @IBOutlet weak var genreLabel: PaddingLabel!        //Label for the genre
@@ -25,14 +28,16 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var navigationBar: UINavigationItem!
     
     var isFavorite: Bool = false                        //To know if this movie is a favorite or not
-    var movieId: Int? = nil                             //Id of the movie
+    var tvShowId: Int? = nil                             //Id of the movie
     var youtubeId: String = ""                          //Id of the trailer
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getTrailer(id: movieId!)
-        getDetails(id: movieId!)
+        print(tvShowId!)
+        
+        getTrailer(id: tvShowId!)
+        getDetails(id: tvShowId!)
         
         let color = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1.0)
         DisplayHelper.genreLabel(label: genreLabel, color: color)
@@ -58,7 +63,7 @@ class MovieDetailsViewController: UIViewController {
             navigationBar.rightBarButtonItem?.tintColor = UIColor(red: 212/255, green: 67/255, blue: 74/255, alpha: 1.0)
         }
     }
-
+    
     //When user tap on the play button, launch youtube with the video
     @IBAction func playAction(_ sender: Any) {
         if youtubeId.isEmpty {
@@ -72,12 +77,11 @@ class MovieDetailsViewController: UIViewController {
             UIApplication.shared.open(youtubeUrl as URL, options: [:], completionHandler: .none)
         }
     }
-    
     //MARK: - Functions
     
     //Get the details of a specific movie
     func getDetails(id: Int) {
-        Alamofire.request(MovieDatabaseRouter.movieDetails(id: id, language: "en-US")).responseJSON{ response in
+        Alamofire.request(MovieDatabaseRouter.tvShowDetails(id: id, language: "en-US")).responseJSON{ response in
             guard response.result.isSuccess else {
                 print("Error while fetching movie details on Details: \(response.result.error)")
                 return
@@ -89,13 +93,16 @@ class MovieDetailsViewController: UIViewController {
     
     //Get the trailer of a specific movie
     func getTrailer(id: Int) {
-        Alamofire.request(MovieDatabaseRouter.movieTrailer(id: id, language: "en-US")).responseJSON{ response in
+        Alamofire.request(MovieDatabaseRouter.tvShowTrailer(id: id, language: "en-US")).responseJSON{ response in
             guard response.result.isSuccess else {
                 print("Error while fetching movie details on Details: \(response.result.error)")
                 return
             }
             let json = JSON(response.result.value!)
-            let trailer = json["results"].arrayValue.filter( { return $0["name"] == "Official Trailer" } )
+            var trailer = json["results"].arrayValue.filter( { return $0["type"] == "Teaser" } )
+            if trailer.isEmpty {
+                trailer = json["results"].arrayValue.filter( { return $0["type"] == "Trailer" } )
+            }
             if !trailer.isEmpty {
                 self.youtubeId = trailer[0]["key"].stringValue
             }
@@ -113,13 +120,24 @@ class MovieDetailsViewController: UIViewController {
         else {
             videoImageView.image = DisplayHelper.setImageFromURl(url: "https://image.tmdb.org/t/p/w500" + details["backdrop_path"].stringValue)
         }
-        titleLabel.text = details["original_title"].stringValue
+        
+        titleLabel.text = details["original_name"].stringValue
         voteAverageLabel.text = String(format: "%.1f", details["vote_average"].floatValue)
         popularityLabel.text = String(format: "%.1f", details["popularity"].floatValue)
         
+        seasonLabel.text = "Seasons: " + details["number_of_seasons"].stringValue
+        if details["in_production"].boolValue {
+            statutLabel.text = "In production"
+        }
+        else {
+            statutLabel.text = "Ending"
+        }
+        episodeLabel.text =  "Episodes: " + details["number_of_episodes"].stringValue
+        
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let date = dateFormatter.date(from: details["release_date"].stringValue)
+        let date = dateFormatter.date(from: details["first_air_date"].stringValue)
         dateFormatter.dateFormat = "MMMM dd, yyyy"
         dateLabel.text = dateFormatter.string(from: date!)
         
@@ -130,25 +148,5 @@ class MovieDetailsViewController: UIViewController {
         genreLabel.text = genreArray.joined(separator: " - ")
         
         overviewTextView.text = details["overview"].stringValue
-    }
-}
-
-//A subclass of UILabel to add custom padding
-class PaddingLabel: UILabel {
-    
-    @IBInspectable var leftInset: CGFloat = 5.0
-    @IBInspectable var rightInset: CGFloat = 5.0
-    
-    override func drawText(in rect: CGRect) {
-        let insets = UIEdgeInsets(top: 5, left: leftInset, bottom: 5, right: rightInset)
-        super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
-    }
-    
-    override var intrinsicContentSize: CGSize {
-        get {
-            var contentSize = super.intrinsicContentSize
-            contentSize.width += leftInset + rightInset
-            return contentSize
-        }
     }
 }
