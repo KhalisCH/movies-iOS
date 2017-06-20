@@ -28,14 +28,18 @@ class TVShowDetailsViewController: UIViewController {
     @IBOutlet weak var navigationBar: UINavigationItem!
     
     var isFavorite: Bool = false                        //To know if this movie is a favorite or not
-    var tvShowId: Int? = nil                             //Id of the movie
+    var tvShowId: Int? = nil                            //Id of the movie
     var youtubeId: String = ""                          //Id of the trailer
+    let user = UserDefaults.standard                    //User session
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getTrailer(id: tvShowId!)
         getDetails(id: tvShowId!)
+        if user.bool(forKey: "isConnected") {
+            checkFavorite()
+        }
         
         let color = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1.0)
         DisplayHelper.genreLabel(label: genreLabel, color: color)
@@ -50,12 +54,21 @@ class TVShowDetailsViewController: UIViewController {
     
     //Show an empty or a plain heart to show if this movie is a favorite
     @IBAction func favoriteAction(_ sender: Any) {
+        let userID = user.integer(forKey: "userID")
+        if !user.bool(forKey: "isConnected") {
+            let alert = UIAlertController(title: "Favorite", message: "You need to be coonected to add a favorite", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         if isFavorite {
+            handleFavorite(request: MoviesRouter.deleteFavorite(userId: userID, videoId: tvShowId!, type: "tv show"))
             isFavorite = false
             navigationBar.rightBarButtonItem?.image = UIImage(named: "ic_empty_favorite_24pt")
             navigationBar.rightBarButtonItem?.tintColor = UIColor.white
         }
         else {
+            handleFavorite(request: MoviesRouter.addFavorite(userId: userID, videoId: tvShowId!, type: "tv show"))
             isFavorite = true
             navigationBar.rightBarButtonItem?.image = UIImage(named: "ic_plain_favorite_24pt")
             navigationBar.rightBarButtonItem?.tintColor = UIColor(red: 212/255, green: 67/255, blue: 74/255, alpha: 1.0)
@@ -146,5 +159,39 @@ class TVShowDetailsViewController: UIViewController {
         genreLabel.text = genreArray.joined(separator: " - ")
         
         overviewTextView.text = details["overview"].stringValue
+    }
+    
+    //Add or delete favorite
+    func handleFavorite(request: MoviesRouter) {
+        Alamofire.request(request).responseString{ response in
+            guard response.result.isSuccess else {
+                print("Error while add favorite on Details: \(response.result.error)")
+                return
+            }
+        }
+    }
+    
+    //To know if this movie is a favorite
+    func checkFavorite(){
+        let user = UserDefaults.standard
+        let userID = user.integer(forKey: "userID")
+        Alamofire.request(MoviesRouter.getFavorite(userId: userID)).responseJSON{ response in
+            guard response.result.isSuccess else {
+                print("Error while get favorite on Details: \(response.result.error)")
+                return
+            }
+            let json = JSON(response.result.value!)
+            let isCheck = json.arrayValue.filter{ return $0["videoId"].intValue == self.tvShowId! && $0["videoType"].stringValue == "tv show" }
+            if isCheck.isEmpty {
+                self.isFavorite = false
+                self.navigationBar.rightBarButtonItem?.image = UIImage(named: "ic_empty_favorite_24pt")
+                self.navigationBar.rightBarButtonItem?.tintColor = UIColor.white
+            }
+            else {
+                self.isFavorite = true
+                self.navigationBar.rightBarButtonItem?.image = UIImage(named: "ic_plain_favorite_24pt")
+                self.navigationBar.rightBarButtonItem?.tintColor = UIColor(red: 212/255, green: 67/255, blue: 74/255, alpha: 1.0)
+            }
+        }
     }
 }

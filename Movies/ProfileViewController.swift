@@ -8,6 +8,8 @@
 
 import UIKit
 import Spring
+import Alamofire
+import SwiftyJSON
 
 class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -19,8 +21,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var collectionView: UICollectionView!
     
     var isMovie: Bool = true
-    var moviePosters: [String] = ["https://image.tmdb.org/t/p/w500/zxkY8byBnCsXodEYpK8tmwEGXBI.jpg", "https://image.tmdb.org/t/p/w500/zxkY8byBnCsXodEYpK8tmwEGXBI.jpg", "https://image.tmdb.org/t/p/w500/zxkY8byBnCsXodEYpK8tmwEGXBI.jpg", "https://image.tmdb.org/t/p/w500/zxkY8byBnCsXodEYpK8tmwEGXBI.jpg", "https://image.tmdb.org/t/p/w500/zxkY8byBnCsXodEYpK8tmwEGXBI.jpg", "https://image.tmdb.org/t/p/w500/zxkY8byBnCsXodEYpK8tmwEGXBI.jpg", "https://image.tmdb.org/t/p/w500/zxkY8byBnCsXodEYpK8tmwEGXBI.jpg", "https://image.tmdb.org/t/p/w500/zxkY8byBnCsXodEYpK8tmwEGXBI.jpg", "https://image.tmdb.org/t/p/w500/zxkY8byBnCsXodEYpK8tmwEGXBI.jpg", "https://image.tmdb.org/t/p/w500/zxkY8byBnCsXodEYpK8tmwEGXBI.jpg"]
-    var tvShowPosters: [String] = ["https://image.tmdb.org/t/p/w500/mBDlsOhNOV1MkNii81aT14EYQ4S.jpg", "https://image.tmdb.org/t/p/w500/mBDlsOhNOV1MkNii81aT14EYQ4S.jpg", "https://image.tmdb.org/t/p/w500/mBDlsOhNOV1MkNii81aT14EYQ4S.jpg", "https://image.tmdb.org/t/p/w500/mBDlsOhNOV1MkNii81aT14EYQ4S.jpg", "https://image.tmdb.org/t/p/w500/mBDlsOhNOV1MkNii81aT14EYQ4S.jpg", "https://image.tmdb.org/t/p/w500/mBDlsOhNOV1MkNii81aT14EYQ4S.jpg", "https://image.tmdb.org/t/p/w500/mBDlsOhNOV1MkNii81aT14EYQ4S.jpg", "https://image.tmdb.org/t/p/w500/mBDlsOhNOV1MkNii81aT14EYQ4S.jpg", "https://image.tmdb.org/t/p/w500/mBDlsOhNOV1MkNii81aT14EYQ4S.jpg", "https://image.tmdb.org/t/p/w500/mBDlsOhNOV1MkNii81aT14EYQ4S.jpg"]
+    var movieData: [JSON] = []
+    var tvShowData: [JSON] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +54,12 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     //Number of elements of the collection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if isMovie {
+            return movieData.count
+        }
+        else {
+            return tvShowData.count
+        }
     }
     
     //Number of sections of the collection
@@ -64,10 +71,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell: HybridCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "hybridCell", for: indexPath) as! HybridCollectionViewCell
         if (isMovie) {
-            cell.posterImageView.image = DisplayHelper.setImageFromURl(url: moviePosters[indexPath.row])
+            cell.posterImageView.image = DisplayHelper.setImageFromURl(url: movieData[indexPath.row].stringValue)
         }
         else {
-            cell.posterImageView.image = DisplayHelper.setImageFromURl(url: tvShowPosters[indexPath.row])
+            cell.posterImageView.image = DisplayHelper.setImageFromURl(url: tvShowData[indexPath.row].stringValue)
         }
             return cell
     }
@@ -105,5 +112,22 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         myTvShowView.duration = 1.0
         myTvShowView.animate()
         collectionView.reloadData()
+    }
+    
+    //MARK: - Functions
+    
+    //Get all favorites
+    func moviesFavorite(){
+        let user = UserDefaults.standard
+        let userID = user.integer(forKey: "userID")
+        Alamofire.request(MoviesRouter.getFavorite(userId: userID)).responseJSON{ response in
+            guard response.result.isSuccess else {
+                print("Error while get favorite on Details: \(response.result.error)")
+                return
+            }
+            let json = JSON(response.result.value!)
+            self.movieData = json.arrayValue.filter{ return $0["videoType"].stringValue == "movie" }
+            self.tvShowData = json.arrayValue.filter{ return $0["videoType"].stringValue == "tv show" }
+        }
     }
 }

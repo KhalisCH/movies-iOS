@@ -221,8 +221,8 @@
 		CBCA71AD1EF2ECD700AEF294 /* Movie */ = {
 			isa = PBXGroup;
 			children = (
-				CBCA71AE1EF2ECF600AEF294 /* MovieViewController.swift */,
 				CBB470501EF544BB009BB2DE /* MovieDetailsViewController.swift */,
+				CBCA71AE1EF2ECF600AEF294 /* MovieViewController.swift */,
 			);
 			name = Movie;
 			sourceTree = "<group>";

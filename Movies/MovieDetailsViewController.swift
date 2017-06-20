@@ -27,13 +27,16 @@ class MovieDetailsViewController: UIViewController {
     var isFavorite: Bool = false                        //To know if this movie is a favorite or not
     var movieId: Int? = nil                             //Id of the movie
     var youtubeId: String = ""                          //Id of the trailer
+    let user = UserDefaults.standard                    //User session
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getTrailer(id: movieId!)
         getDetails(id: movieId!)
-        checkFavorite()
+        if user.bool(forKey: "isConnected") {
+            checkFavorite()
+        }
         
         let color = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1.0)
         DisplayHelper.genreLabel(label: genreLabel, color: color)
@@ -48,8 +51,14 @@ class MovieDetailsViewController: UIViewController {
     
     //Show an empty or a plain heart to show if this movie is a favorite
     @IBAction func favoriteAction(_ sender: Any) {
-        let user = UserDefaults.standard
         let userID = user.integer(forKey: "userID")
+        if !user.bool(forKey: "isConnected") {
+            let alert = UIAlertController(title: "Favorite", message: "You need to be coonected to add a favorite", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
         if isFavorite {
             handleFavorite(request: MoviesRouter.deleteFavorite(userId: userID, videoId: movieId!, type: "movie"))
             isFavorite = false
