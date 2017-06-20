@@ -8,6 +8,8 @@
 
 import UIKit
 import Spring
+import Alamofire
+import SwiftyJSON
 
 class AccountViewController: UIViewController, UITextFieldDelegate {
 
@@ -15,24 +17,24 @@ class AccountViewController: UIViewController, UITextFieldDelegate {
     
     //Connection
     @IBOutlet weak var connectionView: SpringView!
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     //Inscription
     @IBOutlet weak var inscriptionView: SpringView!
-    @IBOutlet weak var emailTextField2: UITextField!
-    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var usernameTextField2: UITextField!
     @IBOutlet weak var passwordTextField2: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailTextField.delegate = self
+        usernameTextField.delegate = self
         passwordTextField.delegate = self
         
-        emailTextField2.delegate = self
-        usernameTextField.delegate = self
+        emailTextField.delegate = self
+        usernameTextField2.delegate = self
         passwordTextField2.delegate = self
         confirmPasswordTextField.delegate = self
     }
@@ -50,9 +52,7 @@ class AccountViewController: UIViewController, UITextFieldDelegate {
     //Connect the user or display inscriptionView
     @IBAction func connectionAction(_ sender: Any) {
         if !connectionView.isHidden {
-            //Connect the user
-            print("Connect")
-            dismiss(animated: true, completion: nil)
+            connection()
             return
         }
         animateView(firstView: inscriptionView, secondView: connectionView)
@@ -61,9 +61,7 @@ class AccountViewController: UIViewController, UITextFieldDelegate {
     //Register the user or display connectionView
     @IBAction func inscriptionAction(_ sender: Any) {
         if !inscriptionView.isHidden {
-            //Register the user
-            print("Register")
-            connectionAction(sender)
+            inscription(sender: sender)
             return
         }
         animateView(firstView: connectionView, secondView: inscriptionView)
@@ -80,6 +78,72 @@ class AccountViewController: UIViewController, UITextFieldDelegate {
     }
     
     //MARK: - Functions
+    
+    //Check if the user has an account and load his data
+    func connection() {
+        Alamofire.request(MoviesRouter.connection(username: usernameTextField.text!, password: passwordTextField.text!)).responseString { response in
+            guard response.result.isSuccess else {
+                print("Error while trying to connect user on Account: \(response.result.error)")
+                return
+            }
+            debugPrint(response)
+            
+            switch(response.response?.statusCode) {
+            case 200?:
+                let json = JSON(response.result.value!)
+                print(json)
+                self.dismiss(animated: true, completion: nil)
+                break
+            case 400?:
+                print("Veuillez remplir tous les champs")
+                break
+            case 403?:
+                print("Mot de passe ou identifiant incorrecte")
+                break
+            case 404?:
+                print("Cet utilisateur n'existe pas")
+                break
+            case 500?:
+                print("Veuillez vérifier votre connexion internet")
+                break
+            default:
+                print("Autres")
+                return
+            }
+        }
+    }
+    
+    //Save the user in the bdd
+    func inscription(sender: Any) {
+        Alamofire.request(MoviesRouter.inscription(email: emailTextField.text!, username: usernameTextField2.text!, password: passwordTextField2.text!)).responseString { response in
+            guard response.result.isSuccess else {
+                print("Error while trying to register user on Account: \(response.result.error)")
+                return
+            }
+            debugPrint(response)
+            
+            switch(response.response?.statusCode) {
+            case 200?:
+                self.connectionAction(sender)
+                break
+            case 400?:
+                print("Veuillez remplir tous les champs")
+                break
+            case 403?:
+               print("Mot de passe ou identifiant incorrecte")
+                break
+            case 404?:
+                print("Cet utilisateur n'existe pas")
+                break
+            case 500?:
+                print("Veuillez vérifier votre connexion internet")
+                break
+            default:
+                print("Autres")
+                return
+            }
+        }
+    }
     
     //Animate the views to show and hide
     func animateView(firstView: SpringView, secondView: SpringView) {

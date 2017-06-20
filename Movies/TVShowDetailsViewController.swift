@@ -34,8 +34,6 @@ class TVShowDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(tvShowId!)
-        
         getTrailer(id: tvShowId!)
         getDetails(id: tvShowId!)
         

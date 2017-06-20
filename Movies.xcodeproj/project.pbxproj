@@ -12,6 +12,7 @@
 		CB645B471EF7D638001D2CB8 /* MovieDatabaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB645B461EF7D638001D2CB8 /* MovieDatabaseRouter.swift */; };
 		CB645B4A1EF824B1001D2CB8 /* TVShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB645B491EF824B1001D2CB8 /* TVShowViewController.swift */; };
 		CB645B4C1EF92331001D2CB8 /* TVShowDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB645B4B1EF92331001D2CB8 /* TVShowDetailsViewController.swift */; };
+		CB645B4E1EF93CEC001D2CB8 /* MoviesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB645B4D1EF93CEC001D2CB8 /* MoviesRouter.swift */; };
 		CB8D62931EF43946006F9BC2 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D62921EF43946006F9BC2 /* MenuTableViewController.swift */; };
 		CB8D62951EF43EBF006F9BC2 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D62941EF43EBF006F9BC2 /* MenuTableViewCell.swift */; };
 		CB8D629A1EF51B57006F9BC2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D62991EF51B57006F9BC2 /* ProfileViewController.swift */; };
@@ -38,6 +39,7 @@
 		CB645B461EF7D638001D2CB8 /* MovieDatabaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDatabaseRouter.swift; sourceTree = "<group>"; };
 		CB645B491EF824B1001D2CB8 /* TVShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowViewController.swift; sourceTree = "<group>"; };
 		CB645B4B1EF92331001D2CB8 /* TVShowDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowDetailsViewController.swift; sourceTree = "<group>"; };
+		CB645B4D1EF93CEC001D2CB8 /* MoviesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesRouter.swift; sourceTree = "<group>"; };
 		CB8D62921EF43946006F9BC2 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		CB8D62941EF43EBF006F9BC2 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		CB8D62991EF51B57006F9BC2 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				CB645B461EF7D638001D2CB8 /* MovieDatabaseRouter.swift */,
+				CB645B4D1EF93CEC001D2CB8 /* MoviesRouter.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				CB8D629A1EF51B57006F9BC2 /* ProfileViewController.swift in Sources */,
 				CBCA71AC1EF2C9FA00AEF294 /* TVCollectionViewCell.swift in Sources */,
 				CBCA71AF1EF2ECF600AEF294 /* MovieViewController.swift in Sources */,
+				CB645B4E1EF93CEC001D2CB8 /* MoviesRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
