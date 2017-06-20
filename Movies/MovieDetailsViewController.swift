@@ -33,6 +33,7 @@ class MovieDetailsViewController: UIViewController {
         
         getTrailer(id: movieId!)
         getDetails(id: movieId!)
+        checkFavorite()
         
         let color = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1.0)
         DisplayHelper.genreLabel(label: genreLabel, color: color)
@@ -47,12 +48,16 @@ class MovieDetailsViewController: UIViewController {
     
     //Show an empty or a plain heart to show if this movie is a favorite
     @IBAction func favoriteAction(_ sender: Any) {
+        let user = UserDefaults.standard
+        let userID = user.integer(forKey: "userID")
         if isFavorite {
+            handleFavorite(request: MoviesRouter.deleteFavorite(userId: userID, videoId: movieId!, type: "movie"))
             isFavorite = false
             navigationBar.rightBarButtonItem?.image = UIImage(named: "ic_empty_favorite_24pt")
             navigationBar.rightBarButtonItem?.tintColor = UIColor.white
         }
         else {
+            handleFavorite(request: MoviesRouter.addFavorite(userId: userID, videoId: movieId!, type: "movie"))
             isFavorite = true
             navigationBar.rightBarButtonItem?.image = UIImage(named: "ic_plain_favorite_24pt")
             navigationBar.rightBarButtonItem?.tintColor = UIColor(red: 212/255, green: 67/255, blue: 74/255, alpha: 1.0)
@@ -130,6 +135,40 @@ class MovieDetailsViewController: UIViewController {
         genreLabel.text = genreArray.joined(separator: " - ")
         
         overviewTextView.text = details["overview"].stringValue
+    }
+    
+    //Add or delete favorite
+    func handleFavorite(request: MoviesRouter) {
+        Alamofire.request(request).responseString{ response in
+            guard response.result.isSuccess else {
+                print("Error while add favorite on Details: \(response.result.error)")
+                return
+            }
+        }
+    }
+    
+    //To know if this movie is a favorite
+    func checkFavorite(){
+        let user = UserDefaults.standard
+        let userID = user.integer(forKey: "userID")
+        Alamofire.request(MoviesRouter.getFavorite(userId: userID)).responseJSON{ response in
+            guard response.result.isSuccess else {
+                print("Error while get favorite on Details: \(response.result.error)")
+                return
+            }
+            let json = JSON(response.result.value!)
+            let isCheck = json.arrayValue.filter{ return $0["videoId"].intValue == self.movieId! && $0["videoType"].stringValue == "movie" }
+            if isCheck.isEmpty {
+                self.isFavorite = false
+                self.navigationBar.rightBarButtonItem?.image = UIImage(named: "ic_empty_favorite_24pt")
+                self.navigationBar.rightBarButtonItem?.tintColor = UIColor.white
+            }
+            else {
+                self.isFavorite = true
+                self.navigationBar.rightBarButtonItem?.image = UIImage(named: "ic_plain_favorite_24pt")
+                self.navigationBar.rightBarButtonItem?.tintColor = UIColor(red: 212/255, green: 67/255, blue: 74/255, alpha: 1.0)
+            }
+        }
     }
 }
 

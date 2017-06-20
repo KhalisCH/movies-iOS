@@ -81,17 +81,19 @@ class AccountViewController: UIViewController, UITextFieldDelegate {
     
     //Check if the user has an account and load his data
     func connection() {
-        Alamofire.request(MoviesRouter.connection(username: usernameTextField.text!, password: passwordTextField.text!)).responseString { response in
+        Alamofire.request(MoviesRouter.connection(username: usernameTextField.text!, password: passwordTextField.text!)).responseJSON { response in
             guard response.result.isSuccess else {
                 print("Error while trying to connect user on Account: \(response.result.error)")
                 return
             }
-            debugPrint(response)
-            
             switch(response.response?.statusCode) {
             case 200?:
                 let json = JSON(response.result.value!)
-                print(json)
+                let defaults = UserDefaults.standard
+                defaults.set(json["userId"].intValue, forKey: "userID")
+                defaults.set(json["username"].stringValue, forKey: "username")
+                defaults.set(true, forKey: "isConnected")
+                defaults.synchronize()
                 self.dismiss(animated: true, completion: nil)
                 break
             case 400?:
@@ -120,8 +122,6 @@ class AccountViewController: UIViewController, UITextFieldDelegate {
                 print("Error while trying to register user on Account: \(response.result.error)")
                 return
             }
-            debugPrint(response)
-            
             switch(response.response?.statusCode) {
             case 200?:
                 self.connectionAction(sender)

@@ -24,9 +24,9 @@ public enum MoviesRouter: URLRequestConvertible {
     /*** Movie ***/
     case connection(username: String, password: String)                    //Connection of a user
     case inscription(email: String, username: String, password: String) //Inscription of a user
-    case addFavorite(userID: Int, videoID: Int, type: String)           //Add a favorite
-    case deleteFavorite(userID: Int, videoID: Int, type: String)        //Delete a favorite
-    case getFavorite(userID: Int)                                       //Get the favorite of a user
+    case addFavorite(userId: Int, videoId: Int, type: String)           //Add a favorite
+    case deleteFavorite(userId: Int, videoId: Int, type: String)        //Delete a favorite
+    case getFavorite(userId: Int)                                       //Get the favorite of a user
 
     
     
@@ -51,8 +51,8 @@ public enum MoviesRouter: URLRequestConvertible {
             return "/api/user/subscribe"
         case .addFavorite, .deleteFavorite:
             return "/api/favorite"
-        case .getFavorite(let userID):
-            return "/api/favorite/" + String(userID)
+        case .getFavorite(let userId):
+            return "/api/favorite/" + String(userId)
         }
     }
     
@@ -64,8 +64,8 @@ public enum MoviesRouter: URLRequestConvertible {
                 return ["username": username, "password": password]
             case .inscription(let email, let username, let password):
                 return ["email": email, "username": username, "password": password]
-            case .addFavorite(let userId, let videoID, let type), .deleteFavorite(let userId, let videoID, let type):
-                return ["userId": userId, "videoID": videoID, "videoType": type]
+            case .addFavorite(let userId, let videoId, let type), .deleteFavorite(let userId, let videoId, let type):
+                return ["userId": userId, "videoId": videoId, "videoType": type]
             default:
                 return [:]
             }
@@ -75,6 +75,11 @@ public enum MoviesRouter: URLRequestConvertible {
         var request = URLRequest(url: url.appendingPathComponent(path))
         request.httpMethod = method.rawValue
         request.timeoutInterval = TimeInterval(10 * 1000)
-        return try JSONEncoding.default.encode(request, with: parameters)
+        if (!parameters.isEmpty) {
+            return try JSONEncoding.default.encode(request, with: parameters)
+        }
+        else {
+            return request
+        }
     }
 }

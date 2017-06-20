@@ -1410,7 +1410,7 @@
                         <barButtonItem key="rightBarButtonItem" image="ic_power_24pt" id="96e-d9-fBh">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="tyg-og-6QM" kind="presentation" id="c0Q-P1-Rtl"/>
+                                <segue destination="tyg-og-6QM" kind="presentation" identifier="logOutSegue" id="c0Q-P1-Rtl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
