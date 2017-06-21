@@ -21,8 +21,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var collectionView: UICollectionView!
     
     var isMovie: Bool = true
-    var movieData: [JSON] = []
-    var tvShowData: [JSON] = []
+    var movieData: [JSON] = []                                  //Array of posters url and id of movies
+    var tvShowData: [JSON] = []                                 //Array of posters url and id of tv shows
+    var movieSelected: Int? = nil                               //Id of the selected movie
+    var tvShowSelected: Int? = nil                              //Id of the selected TV show
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +53,15 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             user.removeObject(forKey: "username")
             user.removeObject(forKey: "isConnected")
         }
+        else if segue.identifier == "movieDetailsSegue" {
+            let controller = segue.destination as! MovieDetailsViewController
+            controller.movieId = movieSelected
+        }
+        else if segue.identifier == "tvShowDetailsSegue" {
+            let controller = segue.destination as! TVShowDetailsViewController
+            controller.tvShowId = tvShowSelected
+        }
+
     }
     
     //MARK: - CollectionViewDelegate
@@ -82,7 +93,16 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             return cell
     }
     
+    //Perform segue when user tap on a collection cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if isMovie {
+            movieSelected = movieData[indexPath.row]["videoId"].intValue
+            performSegue(withIdentifier: "movieDetailsSegue", sender: self)
+        }
+        else {
+            tvShowSelected = tvShowData[indexPath.row]["videoId"].intValue
+            performSegue(withIdentifier: "tvShowDetailsSegue", sender: self)
+        }
     }
     
     //MARK: - Actions

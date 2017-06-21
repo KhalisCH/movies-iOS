@@ -1421,6 +1421,8 @@
                         <outlet property="myTvShowButton" destination="sDT-yY-aSz" id="zrc-cN-D5R"/>
                         <outlet property="myTvShowView" destination="X1d-VZ-blA" id="5eh-kJ-DwU"/>
                         <segue destination="tyg-og-6QM" kind="presentation" identifier="connectionSegue" id="SzQ-K4-Zmc"/>
+                        <segue destination="O7E-gK-d98" kind="presentation" identifier="tvShowDetailsSegue" id="kap-ta-T4g"/>
+                        <segue destination="d4N-fH-DZk" kind="presentation" identifier="movieDetailsSegue" id="ncn-Ep-pm2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XeS-QA-9Jq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1863,9 +1865,9 @@
         <image name="iosLogo.png" width="500" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eE4-KK-6SE"/>
-        <segue reference="qjq-KV-cxG"/>
         <segue reference="6ib-6r-oWd"/>
+        <segue reference="ncn-Ep-pm2"/>
         <segue reference="c0Q-P1-Rtl"/>
+        <segue reference="kap-ta-T4g"/>
     </inferredMetricsTieBreakers>
 </document>

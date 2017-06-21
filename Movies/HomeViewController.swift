@@ -18,7 +18,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var movieCollectionView: UICollectionView!   //CollectionView for the movies
     @IBOutlet weak var tvCollectionView: UICollectionView!      //CollectionView for the tv shows
     
-    var movieData: [JSON] = []                                  //Array of posters url andvar of movies
+    var movieData: [JSON] = []                                  //Array of posters url and id of movies
     var tvShowData: [JSON] = []                                 //Array of posters url and id of tv shows
     var movieSelected: Int? = nil                               //Id of the selected movie
     var tvShowSelected: Int? = nil                              //Id of the selected TV show
