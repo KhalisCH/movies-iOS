@@ -42,12 +42,14 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             performSegue(withIdentifier: "connectionSegue", sender: self)
             return
         }
+        self.title = user.string(forKey: "username")
         moviesFavorite()
     }
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "logOutSegue" {
+            self.title = "Profile"
             let user = UserDefaults.standard
             user.removeObject(forKey: "userID")
             user.removeObject(forKey: "username")
