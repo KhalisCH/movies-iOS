@@ -38,6 +38,7 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     var searchBar = UISearchBar()                               //Searchbar
     var menuButtonItem: UIBarButtonItem?                        //Item button which represents the menu
     var isSearching: Bool = false                               //To know if the user search
+    var performSearch: Bool = false                             //To know if the user execute a search
     
     /*** Tab Menu variables ***/
     var isPopular: Bool = true                                  //To know if popular is selected
@@ -116,6 +117,9 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if performSearch {
+            return
+        }
         if indexPath.item == movieData.count - 1 {
             page = page + 1
             if isPopular {
@@ -199,6 +203,7 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
             showSearchBar()
         }
         else {
+            searchMovie(query: searchBar.text!)
             hideSearchBar()
         }
     }
@@ -208,6 +213,7 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     /*** HTTP Request ***/
     //Get popular or now playing or top rated movies and push information in the movieData array
     func getMovies(request: MovieDatabaseRouter) {
+        performSearch = false
         activityIndicatorView.isHidden = false
         activityIndicatorView.startAnimating()
         Alamofire.request(request).responseJSON{ response in
@@ -223,6 +229,27 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
             }
             self.movieCollectionView.reloadData()
             self.movieCollectionView.contentOffset = CGPoint.zero
+            self.activityIndicatorView.isHidden = true
+            self.activityIndicatorView.stopAnimating()
+        }
+    }
+    
+    func searchMovie(query: String) {
+        performSearch = true
+        activityIndicatorView.isHidden = false
+        activityIndicatorView.startAnimating()
+        Alamofire.request(MovieDatabaseRouter.searchMovie(language: "en-US", query: query, page: 1)).responseJSON{ response in
+            guard response.result.isSuccess else {
+                print("Error while fetching upcoming movies on Home: \(response.result.error)")
+                return
+            }
+            let json = JSON(response.result.value!)
+            self.movieData = []
+            for i in 0..<20 {
+                let obj: JSON = ["id": json["results"][i]["id"].intValue, "posterURL": "https://image.tmdb.org/t/p/w500" + json["results"][i]["poster_path"].stringValue]
+                self.movieData.append(obj)
+            }
+            self.movieCollectionView.reloadData()
             self.activityIndicatorView.isHidden = true
             self.activityIndicatorView.stopAnimating()
         }

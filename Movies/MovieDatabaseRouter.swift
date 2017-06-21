@@ -18,23 +18,17 @@ public enum MovieDatabaseRouter: URLRequestConvertible {
     case upcomingMovie(language: String, page: Int, region: String) //Get the upcoming movie
     case topRatedMovie(language: String, page: Int)                 //Get the top rated movie
     case nowPlayingMovie(language: String, page: Int)               //Get the movie playing now
-    case movieListGenre(language: String)                           //Get the list of genre for movies
     case movieDetails(id: Int, language: String)                    //Get the details of a specific movie
-    case movieFilterByGenre(id: Int, language: String, page: Int)   //Get all the movies for a specific genre
     case movieTrailer(id: Int, language: String)                    //Get the trailer of the movie
+    case searchMovie(language: String, query: String, page: Int)    //Get the movies which corresponds to the query
     
     /*** TV Show ***/
     case popularTvShow(language: String, page: Int)                 //Get the popular TV show
-    case nowPlayingTvShow(language: String, page: Int)              //Get the TV Show playing now
+    case nowPlayingTvShow(language: String, page: Int)              //Get the TV show playing now
     case topRatedTvShow(language: String, page: Int)                //Get the top rated TV show
-    case tvShowListGenre(language: String)                          //Get the list of genre for TV shows
     case tvShowDetails(id: Int, language: String)                   //Get the details of a specific TV show
-    case tvShowFilterByGenre(id: Int, language: String, page: Int)  //Get all the TV shows for a specific genre
     case tvShowTrailer(id: Int, language: String)                    //Get the trailer of the movie
-    
-    /*** Communs ***/
-    case poster(path: String)                                       //Get the poster of a movie
-    
+    case searchTvShow(language: String, query: String, page: Int)    //Get the TV shows which corresponds to the query
     
     /*** HTTP METHOD ***/
     var method: HTTPMethod {
@@ -55,30 +49,24 @@ public enum MovieDatabaseRouter: URLRequestConvertible {
             return "/3/movie/top_rated"
         case .nowPlayingMovie:
             return "/3/movie/now_playing"
-        case .movieListGenre:
-            return "/3/genre/movie/list"
         case .movieDetails(let id, _):
             return "/3/movie/" + String(id)
-        case .movieFilterByGenre:
-            return "/3/genre"
         case .movieTrailer(let id, _):
             return "/3/movie/" + String(id) + "/videos"
+        case .searchMovie:
+            return "/3/search/movie"
         case .popularTvShow:
             return "/3/tv/popular"
         case .nowPlayingTvShow:
             return "/3/tv/on_the_air"
         case .topRatedTvShow:
             return "/3/tv/top_rated"
-        case .tvShowListGenre:
-            return "/3/genre/tv/list"
         case .tvShowDetails(let id, _):
             return "/3/tv/" + String(id)
-        case .tvShowFilterByGenre:
-            return "/3/discover/tv"
         case .tvShowTrailer(let id, _):
             return "/3/tv/" + String(id) + "/videos"
-        case .poster:
-            return "/t/p/w500"
+        case .searchTvShow:
+            return "/3/search/tv"
         }
     }
     
@@ -92,14 +80,10 @@ public enum MovieDatabaseRouter: URLRequestConvertible {
                 return ["api_key": "332db8037d480cad9ce169f33c51f34a", "language": language, "page": page, "region": region]
             case .movieDetails(let language), .movieTrailer(let language), .tvShowDetails(let language), .tvShowTrailer(let language):
                 return ["api_key": "332db8037d480cad9ce169f33c51f34a", "language": language]
-            case .movieListGenre(let language), .tvShowListGenre(let language):
-                return ["api_key": "332db8037d480cad9ce169f33c51f34a", "language": language]
-            case .movieFilterByGenre(let genreID, let language, let page), .tvShowFilterByGenre(let genreID, let language, let page):
-                return ["api_key": "332db8037d480cad9ce169f33c51f34a", "genre_id": genreID, "language": language, "page": page]
             case .popularTvShow(let language, let page), .topRatedTvShow(let language, let page), .nowPlayingTvShow(let language, let page):
                 return ["api_key": "332db8037d480cad9ce169f33c51f34a", "language": language, "page": page]
-            default:
-                return [:]
+            case .searchMovie(let language, let query, let page), .searchTvShow(let language, let query, let page):
+                return ["api_key": "332db8037d480cad9ce169f33c51f34a", "language": language, "query": query, "page": page]
             }
         }()
         
