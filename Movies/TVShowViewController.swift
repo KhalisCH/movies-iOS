@@ -32,6 +32,7 @@ class TVShowViewController: UIViewController, UICollectionViewDelegate, UICollec
     var searchBar = UISearchBar()                               //Searchbar
     var menuButtonItem: UIBarButtonItem?                        //Item button which represents the menu
     var isSearching: Bool = false                               //To know if the user search
+    var performSearch: Bool = false                             //To know if the user execute a search
     
     /*** Tab Menu variables ***/
     var isPopular: Bool = true                                  //To know if popular is selected
@@ -106,6 +107,9 @@ class TVShowViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if performSearch {
+            return
+        }
         if indexPath.item == tvShowData.count - 1 {
             page = page + 1
             if isPopular {
@@ -188,6 +192,7 @@ class TVShowViewController: UIViewController, UICollectionViewDelegate, UICollec
             showSearchBar()
         }
         else {
+            searchTvShow(query: searchBar.text!)
             hideSearchBar()
         }
     }
@@ -197,6 +202,7 @@ class TVShowViewController: UIViewController, UICollectionViewDelegate, UICollec
     /*** HTTP Request ***/
     //Get popular or now playing or top rated movies and push information in the movieData array
     func getTvShows(request: MovieDatabaseRouter) {
+        performSearch = false
         activityIndicatorView.isHidden = false
         activityIndicatorView.startAnimating()
         Alamofire.request(request).responseJSON{ response in
@@ -206,12 +212,34 @@ class TVShowViewController: UIViewController, UICollectionViewDelegate, UICollec
             }
             let json = JSON(response.result.value!)
             self.tvShowData = []
-            for i in 0..<20 {
-                let obj: JSON = ["id": json["results"][i]["id"].intValue, "posterURL": "https://image.tmdb.org/t/p/w500" + json["results"][i]["poster_path"].stringValue]
+            for element in  json["results"].arrayValue{
+                let obj: JSON = ["id": element["id"].intValue, "posterURL": "https://image.tmdb.org/t/p/w500" + element["poster_path"].stringValue]
                 self.tvShowData.append(obj)
             }
             self.tvShowCollectionView.reloadData()
             self.tvShowCollectionView.contentOffset = CGPoint.zero
+            self.activityIndicatorView.isHidden = true
+            self.activityIndicatorView.stopAnimating()
+        }
+    }
+    
+    //Execute the search
+    func searchTvShow(query: String) {
+        performSearch = true
+        activityIndicatorView.isHidden = false
+        activityIndicatorView.startAnimating()
+        Alamofire.request(MovieDatabaseRouter.searchTvShow(language: "en-US", query: query, page: 1)).responseJSON{ response in
+            guard response.result.isSuccess else {
+                print("Error while fetching upcoming movies on Home: \(response.result.error)")
+                return
+            }
+            let json = JSON(response.result.value!)
+            self.tvShowData = []
+            for element in  json["results"].arrayValue{
+                let obj: JSON = ["id": element["id"].intValue, "posterURL": "https://image.tmdb.org/t/p/w500" + element["poster_path"].stringValue]
+                self.tvShowData.append(obj)
+            }
+            self.tvShowCollectionView.reloadData()
             self.activityIndicatorView.isHidden = true
             self.activityIndicatorView.stopAnimating()
         }

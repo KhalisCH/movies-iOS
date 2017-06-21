@@ -223,8 +223,8 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
             }
             let json = JSON(response.result.value!)
             self.movieData = []
-            for i in 0..<20 {
-                let obj: JSON = ["id": json["results"][i]["id"].intValue, "posterURL": "https://image.tmdb.org/t/p/w500" + json["results"][i]["poster_path"].stringValue]
+            for element in json["results"].arrayValue {
+                let obj: JSON = ["id": element["id"].intValue, "posterURL": "https://image.tmdb.org/t/p/w500" + element["poster_path"].stringValue]
                 self.movieData.append(obj)
             }
             self.movieCollectionView.reloadData()
@@ -234,6 +234,7 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
     }
     
+    //Execute the search
     func searchMovie(query: String) {
         performSearch = true
         activityIndicatorView.isHidden = false
@@ -245,8 +246,8 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
             }
             let json = JSON(response.result.value!)
             self.movieData = []
-            for i in 0..<20 {
-                let obj: JSON = ["id": json["results"][i]["id"].intValue, "posterURL": "https://image.tmdb.org/t/p/w500" + json["results"][i]["poster_path"].stringValue]
+            for element in json["results"].arrayValue {
+                let obj: JSON = ["id": element["id"].intValue, "posterURL": "https://image.tmdb.org/t/p/w500" + element["poster_path"].stringValue]
                 self.movieData.append(obj)
             }
             self.movieCollectionView.reloadData()
