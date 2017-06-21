@@ -77,6 +77,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if collectionView === movieCollectionView {
             let cell: MovieCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
             if !movieData.isEmpty {
+                guard !movieData[indexPath.row]["posterURL"].stringValue.isEmpty else {
+                    cell.homeMoviePosterImageView.image = UIImage(named: "iosLogo")
+                    cell.homeMoviePosterImageView.contentMode = .scaleAspectFit
+                    return cell
+                }
                 cell.homeMoviePosterImageView.image = DisplayHelper.setImageFromURl(url: movieData[indexPath.row]["posterURL"].stringValue)
             }
             return cell
@@ -84,6 +89,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         else {
             let cell: TVCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "tvCell", for: indexPath) as! TVCollectionViewCell
             if !tvShowData.isEmpty {
+                guard !movieData[indexPath.row]["posterURL"].stringValue.isEmpty else {
+                    cell.tvPosterImageView.image = UIImage(named: "iosLogo")
+                    cell.tvPosterImageView.contentMode = .scaleAspectFit
+                    return cell
+                }
                 cell.tvPosterImageView.image = DisplayHelper.setImageFromURl(url: tvShowData[indexPath.row]["posterURL"].stringValue)
             }
             return cell

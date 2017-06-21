@@ -87,6 +87,11 @@ class TVShowViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: TVCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "tvCell", for: indexPath) as! TVCollectionViewCell
         if !tvShowData[indexPath.row]["posterURL"].stringValue.isEmpty {
+            guard !tvShowData[indexPath.row]["posterURL"].stringValue.isEmpty else {
+                cell.tvPosterImageView.image = UIImage(named: "iosLogo")
+                cell.tvPosterImageView.contentMode = .scaleAspectFit
+                return cell
+            }
             cell.tvPosterImageView.image = DisplayHelper.setImageFromURl(url: tvShowData[indexPath.row]["posterURL"].stringValue)
         }
         return cell

@@ -84,13 +84,23 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     //Treatment on the cells of the collection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell: HybridCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "hybridCell", for: indexPath) as! HybridCollectionViewCell
-        if (isMovie) {
+        if isMovie {
+            guard !movieData[indexPath.row]["url"].stringValue.isEmpty else {
+                cell.posterImageView.image = UIImage(named: "iosLogo")
+                cell.posterImageView.contentMode = .scaleAspectFit
+                return cell
+            }
             cell.posterImageView.image = DisplayHelper.setImageFromURl(url: "https://image.tmdb.org/t/p/w500" + movieData[indexPath.row]["url"].stringValue)
         }
         else {
+            guard !tvShowData[indexPath.row]["url"].stringValue.isEmpty else {
+                cell.posterImageView.image = UIImage(named: "iosLogo")
+                cell.posterImageView.contentMode = .scaleAspectFit
+                return cell
+            }
             cell.posterImageView.image = DisplayHelper.setImageFromURl(url: "https://image.tmdb.org/t/p/w500" + tvShowData[indexPath.row]["url"].stringValue)
         }
-            return cell
+        return cell
     }
     
     //Perform segue when user tap on a collection cell
