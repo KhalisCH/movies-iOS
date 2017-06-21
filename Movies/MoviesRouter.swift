@@ -22,11 +22,11 @@ public enum MoviesRouter: URLRequestConvertible {
     static let baseURLPath = "https://movies-backend.herokuapp.com"
     
     /*** Movie ***/
-    case connection(username: String, password: String)                    //Connection of a user
-    case inscription(email: String, username: String, password: String) //Inscription of a user
-    case addFavorite(userId: Int, videoId: Int, type: String)           //Add a favorite
-    case deleteFavorite(userId: Int, videoId: Int, type: String)        //Delete a favorite
-    case getFavorite(userId: Int)                                       //Get the favorite of a user
+    case connection(username: String, password: String)                     //Connection of a user
+    case inscription(email: String, username: String, password: String)     //Inscription of a user
+    case addFavorite(userId: Int, videoId: Int, type: String, url: String)  //Add a favorite
+    case deleteFavorite(userId: Int, videoId: Int, type: String)            //Delete a favorite
+    case getFavorite(userId: Int)                                           //Get the favorite of a user
 
     
     
@@ -64,7 +64,9 @@ public enum MoviesRouter: URLRequestConvertible {
                 return ["username": username, "password": password]
             case .inscription(let email, let username, let password):
                 return ["email": email, "username": username, "password": password]
-            case .addFavorite(let userId, let videoId, let type), .deleteFavorite(let userId, let videoId, let type):
+            case .addFavorite(let userId, let videoId, let type, let url):
+                return ["userId": userId, "videoId": videoId, "videoType": type, "url": url]
+            case .deleteFavorite(let userId, let videoId, let type):
                 return ["userId": userId, "videoId": videoId, "videoType": type]
             default:
                 return [:]

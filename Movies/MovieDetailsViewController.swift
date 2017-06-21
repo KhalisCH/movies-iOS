@@ -28,7 +28,8 @@ class MovieDetailsViewController: UIViewController {
     var movieId: Int? = nil                             //Id of the movie
     var youtubeId: String = ""                          //Id of the trailer
     let user = UserDefaults.standard                    //User session
-
+    var poster: String = ""                             //Poster of the movie
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,7 +67,7 @@ class MovieDetailsViewController: UIViewController {
             navigationBar.rightBarButtonItem?.tintColor = UIColor.white
         }
         else {
-            handleFavorite(request: MoviesRouter.addFavorite(userId: userID, videoId: movieId!, type: "movie"))
+            handleFavorite(request: MoviesRouter.addFavorite(userId: userID, videoId: movieId!, type: "movie", url: poster))
             isFavorite = true
             navigationBar.rightBarButtonItem?.image = UIImage(named: "ic_plain_favorite_24pt")
             navigationBar.rightBarButtonItem?.tintColor = UIColor(red: 212/255, green: 67/255, blue: 74/255, alpha: 1.0)
@@ -120,6 +121,9 @@ class MovieDetailsViewController: UIViewController {
     func updateDetails(details: JSON) {
         if self.youtubeId.isEmpty {
             playButton.isHidden = true
+        }
+        if !details["poster_path"].stringValue.isEmpty {
+            poster = details["poster_path"].stringValue
         }
         if details["backdrop_path"].stringValue.isEmpty {
             videoImageView.image = UIImage(named: "iosLogo")

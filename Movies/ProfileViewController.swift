@@ -26,6 +26,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -33,11 +34,13 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     //Display login page if the user is not connected favorite else
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         let user = UserDefaults.standard
         guard user.bool(forKey: "isConnected") else {
             performSegue(withIdentifier: "connectionSegue", sender: self)
             return
         }
+        moviesFavorite()
     }
     
     //MARK: - Navigation
@@ -71,10 +74,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell: HybridCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "hybridCell", for: indexPath) as! HybridCollectionViewCell
         if (isMovie) {
-            cell.posterImageView.image = DisplayHelper.setImageFromURl(url: movieData[indexPath.row].stringValue)
+            cell.posterImageView.image = DisplayHelper.setImageFromURl(url: "https://image.tmdb.org/t/p/w500" + movieData[indexPath.row]["url"].stringValue)
         }
         else {
-            cell.posterImageView.image = DisplayHelper.setImageFromURl(url: tvShowData[indexPath.row].stringValue)
+            cell.posterImageView.image = DisplayHelper.setImageFromURl(url: "https://image.tmdb.org/t/p/w500" + tvShowData[indexPath.row]["url"].stringValue)
         }
             return cell
     }
@@ -128,6 +131,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             let json = JSON(response.result.value!)
             self.movieData = json.arrayValue.filter{ return $0["videoType"].stringValue == "movie" }
             self.tvShowData = json.arrayValue.filter{ return $0["videoType"].stringValue == "tv show" }
+            self.collectionView.reloadData()
         }
     }
 }

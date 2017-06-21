@@ -14,7 +14,7 @@ class TVShowDetailsViewController: UIViewController {
 
     //MARK: - Properties
     @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var videoImageView: UIImageView!     //ImageView which is backdrop poster of the movie
+    @IBOutlet weak var videoImageView: UIImageView!     //ImageView which is backdrop poster of the TV show
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var voteAverageLabel: UILabel!
     @IBOutlet weak var popularityLabel: UILabel!
@@ -27,10 +27,11 @@ class TVShowDetailsViewController: UIViewController {
     @IBOutlet weak var overviewTextView: UITextView!
     @IBOutlet weak var navigationBar: UINavigationItem!
     
-    var isFavorite: Bool = false                        //To know if this movie is a favorite or not
-    var tvShowId: Int? = nil                            //Id of the movie
+    var isFavorite: Bool = false                        //To know if this TV show is a favorite or not
+    var tvShowId: Int? = nil                            //Id of the TV show
     var youtubeId: String = ""                          //Id of the trailer
     let user = UserDefaults.standard                    //User session
+    var poster: String = ""                             //Poster of the TV show
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +69,7 @@ class TVShowDetailsViewController: UIViewController {
             navigationBar.rightBarButtonItem?.tintColor = UIColor.white
         }
         else {
-            handleFavorite(request: MoviesRouter.addFavorite(userId: userID, videoId: tvShowId!, type: "tv show"))
+            handleFavorite(request: MoviesRouter.addFavorite(userId: userID, videoId: tvShowId!, type: "tv show", url: poster))
             isFavorite = true
             navigationBar.rightBarButtonItem?.image = UIImage(named: "ic_plain_favorite_24pt")
             navigationBar.rightBarButtonItem?.tintColor = UIColor(red: 212/255, green: 67/255, blue: 74/255, alpha: 1.0)
@@ -124,6 +125,9 @@ class TVShowDetailsViewController: UIViewController {
     func updateDetails(details: JSON) {
         if self.youtubeId.isEmpty {
             playButton.isHidden = true
+        }
+        if !details["poster_path"].stringValue.isEmpty {
+            poster = details["poster_path"].stringValue
         }
         if details["backdrop_path"].stringValue.isEmpty {
             videoImageView.image = UIImage(named: "iosLogo")
