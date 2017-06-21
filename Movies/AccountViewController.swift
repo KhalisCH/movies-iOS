@@ -15,6 +15,7 @@ class AccountViewController: UIViewController, UITextFieldDelegate {
 
     //MARK: - Properties
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     //Connection
     @IBOutlet weak var connectionView: SpringView!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -81,6 +82,8 @@ class AccountViewController: UIViewController, UITextFieldDelegate {
     
     //Check if the user has an account and load his data
     func connection() {
+        activityIndicatorView.isHidden = false
+        activityIndicatorView.startAnimating()
         Alamofire.request(MoviesRouter.connection(username: usernameTextField.text!, password: passwordTextField.text!)).responseJSON { response in
             guard response.result.isSuccess else {
                 print("Error while trying to connect user on Account: \(response.result.error)")
@@ -94,6 +97,8 @@ class AccountViewController: UIViewController, UITextFieldDelegate {
                 defaults.set(json["username"].stringValue, forKey: "username")
                 defaults.set(true, forKey: "isConnected")
                 defaults.synchronize()
+                self.activityIndicatorView.isHidden = true
+                self.activityIndicatorView.stopAnimating()
                 self.dismiss(animated: true, completion: nil)
                 break
             case 400?:
@@ -117,6 +122,8 @@ class AccountViewController: UIViewController, UITextFieldDelegate {
     
     //Save the user in the bdd
     func inscription(sender: Any) {
+        activityIndicatorView.isHidden = false
+        activityIndicatorView.startAnimating()
         Alamofire.request(MoviesRouter.inscription(email: emailTextField.text!, username: usernameTextField2.text!, password: passwordTextField2.text!)).responseString { response in
             guard response.result.isSuccess else {
                 print("Error while trying to register user on Account: \(response.result.error)")
@@ -124,6 +131,8 @@ class AccountViewController: UIViewController, UITextFieldDelegate {
             }
             switch(response.response?.statusCode) {
             case 200?:
+                self.activityIndicatorView.isHidden = true
+                self.activityIndicatorView.stopAnimating()
                 self.connectionAction(sender)
                 break
             case 400?:

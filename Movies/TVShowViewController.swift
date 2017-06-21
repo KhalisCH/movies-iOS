@@ -16,6 +16,7 @@ class TVShowViewController: UIViewController, UICollectionViewDelegate, UICollec
 
     //MARK: - Properties
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     /*** CollectionView ***/
     @IBOutlet weak var tvShowCollectionView: UICollectionView!   //collection
     
@@ -38,13 +39,14 @@ class TVShowViewController: UIViewController, UICollectionViewDelegate, UICollec
     var isTopRated: Bool = false                                //To know if top rated is selected
     
     /*** Id variable and data ***/
-    var tvShowSelected: Int? = nil                               //Id of the selected movie
-    var tvShowData: [JSON] = []                                  //Array of posters url andvar of movies
+    var tvShowSelected: Int? = nil                              //Id of the selected TV show
+    var tvShowData: [JSON] = []                                 //Array of posters url and id of TV show
+    var page: Int = 1                                           //Number of the page we want
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getTvShows(request: MovieDatabaseRouter.popularTvShow(language: "en-US", page: 1))
+        getTvShows(request: MovieDatabaseRouter.popularTvShow(language: "en-US", page: page))
         
         tvShowCollectionView.delegate = self
         tvShowCollectionView.dataSource = self
@@ -103,11 +105,27 @@ class TVShowViewController: UIViewController, UICollectionViewDelegate, UICollec
         performSegue(withIdentifier: "tvShowDetailsSegue", sender: self)
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.item == tvShowData.count - 1 {
+            page = page + 1
+            if isPopular {
+                getTvShows(request: MovieDatabaseRouter.popularMovie(language: "en-US", page: page))
+            }
+            else if isRecent {
+                getTvShows(request: MovieDatabaseRouter.nowPlayingMovie(language: "en-US", page: page))
+            }
+            else if isTopRated {
+                getTvShows(request: MovieDatabaseRouter.topRatedMovie(language: "en-US", page: page))
+            }
+        }
+    }
+    
     //MARK: - Actions 
     
     //Selected Popular tab and display all populars TV shows
     @IBAction func popularAction(_ sender: Any) {
-        getTvShows(request: MovieDatabaseRouter.popularTvShow(language: "en-US", page: 1))
+        page = 1
+        getTvShows(request: MovieDatabaseRouter.popularTvShow(language: "en-US", page: page))
         isPopular = true
         
         popularButton.setTitleColor(UIColor.white, for: .normal)
@@ -126,7 +144,8 @@ class TVShowViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     //Selected Recent tab and display all upcommings TV shows
     @IBAction func recentAction(_ sender: Any) {
-        getTvShows(request: MovieDatabaseRouter.nowPlayingTvShow(language: "en-US", page: 1))
+        page = 1
+        getTvShows(request: MovieDatabaseRouter.nowPlayingTvShow(language: "en-US", page: page))
         isRecent = true
         
         recentButton.setTitleColor(UIColor.white, for: .normal)
@@ -145,7 +164,8 @@ class TVShowViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     //Selected Top Rated tab and display all top rated TV shows
     @IBAction func topRatedAction(_ sender: Any) {
-        getTvShows(request: MovieDatabaseRouter.topRatedTvShow(language: "en-US", page: 1))
+        page = 1
+        getTvShows(request: MovieDatabaseRouter.topRatedTvShow(language: "en-US", page: page))
         isTopRated = true
         
         topRatedButton.setTitleColor(UIColor.white, for: .normal)
@@ -177,6 +197,8 @@ class TVShowViewController: UIViewController, UICollectionViewDelegate, UICollec
     /*** HTTP Request ***/
     //Get popular or now playing or top rated movies and push information in the movieData array
     func getTvShows(request: MovieDatabaseRouter) {
+        activityIndicatorView.isHidden = false
+        activityIndicatorView.startAnimating()
         Alamofire.request(request).responseJSON{ response in
             guard response.result.isSuccess else {
                 print("Error while fetching upcoming movies on Home: \(response.result.error)")
@@ -189,6 +211,9 @@ class TVShowViewController: UIViewController, UICollectionViewDelegate, UICollec
                 self.tvShowData.append(obj)
             }
             self.tvShowCollectionView.reloadData()
+            self.tvShowCollectionView.contentOffset = CGPoint.zero
+            self.activityIndicatorView.isHidden = true
+            self.activityIndicatorView.stopAnimating()
         }
     }
     

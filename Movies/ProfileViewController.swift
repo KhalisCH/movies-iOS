@@ -14,6 +14,7 @@ import SwiftyJSON
 class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     //MARK: - Properties
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var myMovieButton: UIButton!
     @IBOutlet weak var myTvShowButton: UIButton!
     @IBOutlet weak var myMovieView: SpringView!
@@ -153,6 +154,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     //Get all favorites
     func moviesFavorite(){
+        activityIndicatorView.isHidden = false
+        activityIndicatorView.startAnimating()
         let user = UserDefaults.standard
         let userID = user.integer(forKey: "userID")
         Alamofire.request(MoviesRouter.getFavorite(userId: userID)).responseJSON{ response in
@@ -164,6 +167,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             self.movieData = json.arrayValue.filter{ return $0["videoType"].stringValue == "movie" }
             self.tvShowData = json.arrayValue.filter{ return $0["videoType"].stringValue == "tv show" }
             self.collectionView.reloadData()
+            self.activityIndicatorView.isHidden = true
+            self.activityIndicatorView.stopAnimating()
         }
     }
 }

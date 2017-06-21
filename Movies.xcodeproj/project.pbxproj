@@ -13,8 +13,6 @@
 		CB645B4A1EF824B1001D2CB8 /* TVShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB645B491EF824B1001D2CB8 /* TVShowViewController.swift */; };
 		CB645B4C1EF92331001D2CB8 /* TVShowDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB645B4B1EF92331001D2CB8 /* TVShowDetailsViewController.swift */; };
 		CB645B4E1EF93CEC001D2CB8 /* MoviesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB645B4D1EF93CEC001D2CB8 /* MoviesRouter.swift */; };
-		CB8D62931EF43946006F9BC2 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D62921EF43946006F9BC2 /* MenuTableViewController.swift */; };
-		CB8D62951EF43EBF006F9BC2 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D62941EF43EBF006F9BC2 /* MenuTableViewCell.swift */; };
 		CB8D629A1EF51B57006F9BC2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D62991EF51B57006F9BC2 /* ProfileViewController.swift */; };
 		CB8D629D1EF528FB006F9BC2 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D629C1EF528FB006F9BC2 /* AccountViewController.swift */; };
 		CBA2908B1EF27324001912F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA2908A1EF27324001912F7 /* AppDelegate.swift */; };
@@ -40,8 +38,6 @@
 		CB645B491EF824B1001D2CB8 /* TVShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowViewController.swift; sourceTree = "<group>"; };
 		CB645B4B1EF92331001D2CB8 /* TVShowDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowDetailsViewController.swift; sourceTree = "<group>"; };
 		CB645B4D1EF93CEC001D2CB8 /* MoviesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesRouter.swift; sourceTree = "<group>"; };
-		CB8D62921EF43946006F9BC2 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
-		CB8D62941EF43EBF006F9BC2 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		CB8D62991EF51B57006F9BC2 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CB8D629C1EF528FB006F9BC2 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		CBA290871EF27324001912F7 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,15 +105,6 @@
 			name = "TV Show";
 			sourceTree = "<group>";
 		};
-		CB8D62911EF43913006F9BC2 /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				CB8D62941EF43EBF006F9BC2 /* MenuTableViewCell.swift */,
-				CB8D62921EF43946006F9BC2 /* MenuTableViewController.swift */,
-			);
-			name = Menu;
-			sourceTree = "<group>";
-		};
 		CB8D629B1EF51B5C006F9BC2 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,7 +141,6 @@
 				CBCA71A01EF2893300AEF294 /* Home */,
 				CBA290A11EF27BF9001912F7 /* Image */,
 				CBA2909E1EF27920001912F7 /* LaunchScreen */,
-				CB8D62911EF43913006F9BC2 /* Menu */,
 				CBCA71AD1EF2ECD700AEF294 /* Movie */,
 				CB8D629B1EF51B5C006F9BC2 /* Profile */,
 				CBA2909C1EF274B7001912F7 /* Storyboard */,
@@ -355,9 +341,7 @@
 				CBA290A01EF27937001912F7 /* LaunchScreenViewController.swift in Sources */,
 				CBB4704F1EF53BEE009BB2DE /* DisplayHelper.swift in Sources */,
 				CB645B4A1EF824B1001D2CB8 /* TVShowViewController.swift in Sources */,
-				CB8D62931EF43946006F9BC2 /* MenuTableViewController.swift in Sources */,
 				CB645B4C1EF92331001D2CB8 /* TVShowDetailsViewController.swift in Sources */,
-				CB8D62951EF43EBF006F9BC2 /* MenuTableViewCell.swift in Sources */,
 				CBA2908B1EF27324001912F7 /* AppDelegate.swift in Sources */,
 				CBCA71A21EF2894500AEF294 /* HomeViewController.swift in Sources */,
 				CBCA71AA1EF2C9ED00AEF294 /* MovieCollectionViewCell.swift in Sources */,

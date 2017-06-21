@@ -16,6 +16,9 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
 
     //MARK: - Properties
     
+    /*** Loading indicator ***/
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
     /*** Gradient and collectionView ***/
     @IBOutlet weak var gradientView: UIView!                    //View for the gradient
     @IBOutlet weak var movieCollectionView: UICollectionView!   //collection
@@ -44,11 +47,12 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     /*** Id variable and data ***/
     var movieSelected: Int? = nil                               //Id of the selected movie
     var movieData: [JSON] = []                                  //Array of posters url andvar of movies
+    var page: Int = 1                                           //Number of the page we want
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getMovies(request: MovieDatabaseRouter.popularMovie(language: "en-US", page: 1))
+        getMovies(request: MovieDatabaseRouter.popularMovie(language: "en-US", page: page))
         
         movieCollectionView.delegate = self
         movieCollectionView.dataSource = self
@@ -75,7 +79,6 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     //Pass infromation to the destination view controller before perform segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "movieDetailsSegue" {
             let controller = segue.destination as! MovieDetailsViewController
             controller.movieId = movieSelected
@@ -112,11 +115,27 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
         performSegue(withIdentifier: "movieDetailsSegue", sender: self)
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.item == movieData.count - 1 {
+            page = page + 1
+            if isPopular {
+                getMovies(request: MovieDatabaseRouter.popularMovie(language: "en-US", page: page))
+            }
+            else if isUpcoming {
+                getMovies(request: MovieDatabaseRouter.nowPlayingMovie(language: "en-US", page: page))
+            }
+            else if isTopRated {
+                getMovies(request: MovieDatabaseRouter.topRatedMovie(language: "en-US", page: page))
+            }
+        }
+    }
+    
     //MARK: - Actions
     
     //Selected Popular tab and display all populars movies
     @IBAction func popularAction(_ sender: Any) {
-        getMovies(request: MovieDatabaseRouter.popularMovie(language: "en-US", page: 1))
+        page = 1
+        getMovies(request: MovieDatabaseRouter.popularMovie(language: "en-US", page: page))
         isPopular = true
         
         popularButton.setTitleColor(UIColor.white, for: .normal)
@@ -135,7 +154,8 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     //Selected Upcoming tab and display all upcommings movies
     @IBAction func upcomingAction(_ sender: Any) {
-        getMovies(request: MovieDatabaseRouter.nowPlayingMovie(language: "en-US", page: 1))
+        page = 1
+        getMovies(request: MovieDatabaseRouter.nowPlayingMovie(language: "en-US", page: page))
         isUpcoming = true
         
         upcomingButton.setTitleColor(UIColor.white, for: .normal)
@@ -154,7 +174,8 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     //Selected Top Rated tab and display all top rated movies
     @IBAction func topRatedAction(_ sender: Any) {
-        getMovies(request: MovieDatabaseRouter.topRatedMovie(language: "en-US", page: 1))
+        page = 1
+        getMovies(request: MovieDatabaseRouter.topRatedMovie(language: "en-US", page: page))
         isTopRated = true
         
         topRatedButton.setTitleColor(UIColor.white, for: .normal)
@@ -187,6 +208,8 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     /*** HTTP Request ***/
     //Get popular or now playing or top rated movies and push information in the movieData array
     func getMovies(request: MovieDatabaseRouter) {
+        activityIndicatorView.isHidden = false
+        activityIndicatorView.startAnimating()
         Alamofire.request(request).responseJSON{ response in
             guard response.result.isSuccess else {
                 print("Error while fetching upcoming movies on Home: \(response.result.error)")
@@ -199,6 +222,9 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
                 self.movieData.append(obj)
             }
             self.movieCollectionView.reloadData()
+            self.movieCollectionView.contentOffset = CGPoint.zero
+            self.activityIndicatorView.isHidden = true
+            self.activityIndicatorView.stopAnimating()
         }
     }
     

@@ -54,7 +54,7 @@ class MovieDetailsViewController: UIViewController {
     @IBAction func favoriteAction(_ sender: Any) {
         let userID = user.integer(forKey: "userID")
         if !user.bool(forKey: "isConnected") {
-            let alert = UIAlertController(title: "Favorite", message: "You need to be coonected to add a favorite", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Favorite", message: "You need to be connected to add a favorite", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             return

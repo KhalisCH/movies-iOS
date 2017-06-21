@@ -14,6 +14,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     //MARK: - Properties
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var gradientView: UIView!                    //View for the gradient
     @IBOutlet weak var movieCollectionView: UICollectionView!   //CollectionView for the movies
     @IBOutlet weak var tvCollectionView: UICollectionView!      //CollectionView for the tv shows
@@ -28,6 +29,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        activityIndicatorView.isHidden = false
+        activityIndicatorView.startAnimating()
         getUpcomingMovies()
         getNowPlayingTvShow()
         
@@ -134,6 +137,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 self.movieData.append(obj)
             }
             self.movieCollectionView.reloadData()
+            self.activityIndicatorView.isHidden = true
+            self.activityIndicatorView.stopAnimating()
         }
     }
     
@@ -150,6 +155,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 self.tvShowData.append(obj)
             }
             self.tvCollectionView.reloadData()
+            self.activityIndicatorView.isHidden = true
+            self.activityIndicatorView.stopAnimating()
         }
     }
 }
