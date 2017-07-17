@@ -34,6 +34,20 @@
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CB6BE37A1F1D21BD0073E830"
+               BuildableName = "MoviesTests.xctest"
+               BlueprintName = "MoviesTests"
+               ReferencedContainer = "container:Movies.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
