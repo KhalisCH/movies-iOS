@@ -101,7 +101,7 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     //Treatment on the cells of the collection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: MovieCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
-        guard !movieData[indexPath.row]["posterURL"].stringValue.isEmpty else {
+        guard movieData[indexPath.row]["posterURL"].stringValue != "https://image.tmdb.org/t/p/w500" else {
             cell.moviePosterImageView.image = UIImage(named: "iosLogo")
             cell.moviePosterImageView.contentMode = .scaleAspectFit
             return cell

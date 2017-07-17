@@ -90,7 +90,7 @@ class TVShowViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: TVCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "tvCell", for: indexPath) as! TVCollectionViewCell
         if !tvShowData[indexPath.row]["posterURL"].stringValue.isEmpty {
-            guard !tvShowData[indexPath.row]["posterURL"].stringValue.isEmpty else {
+            guard tvShowData[indexPath.row]["posterURL"].stringValue != "https://image.tmdb.org/t/p/w500" else {
                 cell.tvPosterImageView.image = UIImage(named: "iosLogo")
                 cell.tvPosterImageView.contentMode = .scaleAspectFit
                 return cell
@@ -113,13 +113,13 @@ class TVShowViewController: UIViewController, UICollectionViewDelegate, UICollec
         if indexPath.item == tvShowData.count - 1 {
             page = page + 1
             if isPopular {
-                getTvShows(request: MovieDatabaseRouter.popularMovie(language: "en-US", page: page))
+                getTvShows(request: MovieDatabaseRouter.popularTvShow(language: "en-US", page: page))
             }
             else if isRecent {
-                getTvShows(request: MovieDatabaseRouter.nowPlayingMovie(language: "en-US", page: page))
+                getTvShows(request: MovieDatabaseRouter.nowPlayingTvShow(language: "en-US", page: page))
             }
             else if isTopRated {
-                getTvShows(request: MovieDatabaseRouter.topRatedMovie(language: "en-US", page: page))
+                getTvShows(request: MovieDatabaseRouter.topRatedTvShow(language: "en-US", page: page))
             }
         }
     }

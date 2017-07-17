@@ -308,8 +308,8 @@
                                                     <constraint firstAttribute="height" constant="1" id="1Ww-cA-Q71"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="King Arthur" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUU-uW-7lm">
-                                                <rect key="frame" x="125" y="213" width="125" height="25"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="King Arthur" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUU-uW-7lm">
+                                                <rect key="frame" x="8" y="213" width="359" height="25"/>
                                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -388,6 +388,7 @@
                                             <constraint firstItem="Wk3-ac-IqM" firstAttribute="centerX" secondItem="bXv-bn-jvC" secondAttribute="centerX" id="0Fd-aB-tZy"/>
                                             <constraint firstItem="Vgj-EK-7jD" firstAttribute="centerX" secondItem="LXI-2U-0yS" secondAttribute="centerX" id="1OO-ce-hoW"/>
                                             <constraint firstAttribute="trailing" secondItem="RU4-HM-Bmi" secondAttribute="trailing" constant="8" id="342-qH-u27"/>
+                                            <constraint firstItem="GUU-uW-7lm" firstAttribute="leading" secondItem="bXv-bn-jvC" secondAttribute="leading" constant="8" id="4t8-IQ-176"/>
                                             <constraint firstItem="jxe-Z0-eVb" firstAttribute="top" secondItem="Wk3-ac-IqM" secondAttribute="bottom" constant="15" id="7VW-Qb-ddp"/>
                                             <constraint firstItem="Bs1-bu-wc8" firstAttribute="centerY" secondItem="huS-Qk-Erc" secondAttribute="centerY" id="ADs-3t-aTt"/>
                                             <constraint firstAttribute="trailing" secondItem="QOd-B2-d2X" secondAttribute="trailing" constant="16" id="EAs-JL-cGr"/>
@@ -408,6 +409,7 @@
                                             <constraint firstItem="zGG-Tr-qrg" firstAttribute="top" secondItem="ZCF-Nt-LVS" secondAttribute="bottom" constant="8" id="ces-BL-HXU"/>
                                             <constraint firstItem="QOd-B2-d2X" firstAttribute="centerY" secondItem="A8e-2T-CGG" secondAttribute="centerY" id="dcg-L9-HzJ"/>
                                             <constraint firstItem="oVA-yM-L0R" firstAttribute="centerY" secondItem="A8e-2T-CGG" secondAttribute="centerY" id="eiW-fz-HD3"/>
+                                            <constraint firstAttribute="trailing" secondItem="GUU-uW-7lm" secondAttribute="trailing" constant="8" id="fIx-lA-CKo"/>
                                             <constraint firstItem="QOd-B2-d2X" firstAttribute="leading" secondItem="oVA-yM-L0R" secondAttribute="trailing" constant="5" id="hsY-96-0Fb"/>
                                             <constraint firstItem="LXI-2U-0yS" firstAttribute="centerX" secondItem="bXv-bn-jvC" secondAttribute="centerX" id="iCc-T5-O2X"/>
                                             <constraint firstItem="T8w-M8-2EG" firstAttribute="width" secondItem="bXv-bn-jvC" secondAttribute="width" id="mXX-vG-mr1"/>
@@ -1585,8 +1587,8 @@
                                                     <constraint firstAttribute="height" constant="1" id="d2H-u6-7XJ"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="King Arthur" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCI-jd-XhQ">
-                                                <rect key="frame" x="125" y="213" width="125" height="25"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCI-jd-XhQ">
+                                                <rect key="frame" x="8" y="225.5" width="359" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -1605,14 +1607,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star_24pt" translatesAutoresizingMaskIntoConstraints="NO" id="l8t-0z-DCF">
-                                                <rect key="frame" x="231" y="269" width="24" height="24"/>
+                                                <rect key="frame" x="263" y="269" width="24" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="24" id="QGs-zU-REn"/>
                                                     <constraint firstAttribute="height" constant="24" id="ZSi-G1-7Ak"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popularity:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xz0-jE-blb">
-                                                <rect key="frame" x="263" y="269" width="59" height="24"/>
+                                                <rect key="frame" x="295" y="269" width="59" height="24"/>
                                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="11"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -1624,34 +1626,33 @@
                                                     <constraint firstAttribute="height" constant="1" id="BgV-Mc-AJk"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7,5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5BK-pU-AJQ">
-                                                <rect key="frame" x="86" y="269" width="17" height="24"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5BK-pU-AJQ">
+                                                <rect key="frame" x="86" y="269" width="0.0" height="24"/>
                                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="11"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13,35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYB-Xq-Jcr">
-                                                <rect key="frame" x="327" y="269" width="32" height="24"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYB-Xq-Jcr">
+                                                <rect key="frame" x="359" y="269" width="0.0" height="24"/>
                                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="11"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 February 2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJ9-jQ-Vsw">
-                                                <rect key="frame" x="129.5" y="349.5" width="117" height="16"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJ9-jQ-Vsw">
+                                                <rect key="frame" x="187.5" y="334.5" width="0.0" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxx-54-Kx3">
-                                                <rect key="frame" x="16" y="420.5" width="343" height="154.5"/>
+                                                <rect key="frame" x="16" y="389.5" width="343" height="30"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2f-52-Wqi" customClass="PaddingLabel" customModule="Movies" customModuleProvider="target">
-                                                <rect key="frame" x="172.5" y="380.5" width="31.5" height="25"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2f-52-Wqi" customClass="PaddingLabel" customModule="Movies" customModuleProvider="target">
+                                                <rect key="frame" x="187.5" y="349.5" width="0.0" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="bgW-YV-hcD"/>
                                                 </constraints>
@@ -1659,22 +1660,22 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDT-Uy-QiH" customClass="PaddingLabel" customModule="Movies" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="319" width="34" height="15.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDT-Uy-QiH" customClass="PaddingLabel" customModule="Movies" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="319" width="0.0" height="0.0"/>
                                                 <color key="backgroundColor" red="0.10196078431372549" green="0.27450980392156865" blue="0.54117647058823526" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJc-ZH-XNq" customClass="PaddingLabel" customModule="Movies" customModuleProvider="target">
-                                                <rect key="frame" x="170.5" y="319" width="34" height="15.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJc-ZH-XNq" customClass="PaddingLabel" customModule="Movies" customModuleProvider="target">
+                                                <rect key="frame" x="187.5" y="319.5" width="0.0" height="0.0"/>
                                                 <color key="backgroundColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkG-MD-Uq1" customClass="PaddingLabel" customModule="Movies" customModuleProvider="target">
-                                                <rect key="frame" x="325" y="319" width="34" height="15.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkG-MD-Uq1" customClass="PaddingLabel" customModule="Movies" customModuleProvider="target">
+                                                <rect key="frame" x="359" y="319.5" width="0.0" height="0.0"/>
                                                 <color key="backgroundColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1724,9 +1725,11 @@
                                             <constraint firstItem="PJ9-jQ-Vsw" firstAttribute="top" secondItem="GJc-ZH-XNq" secondAttribute="bottom" constant="15" id="nho-MI-oiN"/>
                                             <constraint firstItem="PJ9-jQ-Vsw" firstAttribute="centerX" secondItem="OtF-Iz-1Gi" secondAttribute="centerX" id="oGw-mA-Dgp"/>
                                             <constraint firstItem="W7e-tw-8qH" firstAttribute="centerY" secondItem="opi-cv-p72" secondAttribute="centerY" id="q4k-zy-c1M"/>
+                                            <constraint firstAttribute="trailing" secondItem="QCI-jd-XhQ" secondAttribute="trailing" constant="8" id="qP6-W9-4av"/>
                                             <constraint firstItem="5O2-5r-TqN" firstAttribute="leading" secondItem="OtF-Iz-1Gi" secondAttribute="leading" constant="16" id="qXm-y2-yDq"/>
                                             <constraint firstItem="cxx-54-Kx3" firstAttribute="top" secondItem="y2f-52-Wqi" secondAttribute="bottom" constant="15" id="s0A-GL-Whq"/>
                                             <constraint firstItem="bXY-oa-OxD" firstAttribute="top" secondItem="Rq9-Su-toa" secondAttribute="bottom" constant="8" id="sxi-OI-22R"/>
+                                            <constraint firstItem="QCI-jd-XhQ" firstAttribute="leading" secondItem="OtF-Iz-1Gi" secondAttribute="leading" constant="8" id="veO-FE-A20"/>
                                             <constraint firstAttribute="trailing" secondItem="Rq9-Su-toa" secondAttribute="trailing" constant="8" id="zDC-Vo-ssu"/>
                                         </constraints>
                                     </view>

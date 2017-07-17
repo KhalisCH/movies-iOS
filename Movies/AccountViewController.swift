@@ -31,6 +31,8 @@ class AccountViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        activityIndicatorView.isHidden = true
+        
         usernameTextField.delegate = self
         passwordTextField.delegate = self
         

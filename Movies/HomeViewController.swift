@@ -80,7 +80,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if collectionView === movieCollectionView {
             let cell: MovieCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
             if !movieData.isEmpty {
-                guard !movieData[indexPath.row]["posterURL"].stringValue.isEmpty else {
+                guard movieData[indexPath.row]["posterURL"].stringValue != "https://image.tmdb.org/t/p/w500" else {
                     cell.homeMoviePosterImageView.image = UIImage(named: "iosLogo")
                     cell.homeMoviePosterImageView.contentMode = .scaleAspectFit
                     return cell
@@ -92,7 +92,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         else {
             let cell: TVCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "tvCell", for: indexPath) as! TVCollectionViewCell
             if !tvShowData.isEmpty {
-                guard !movieData[indexPath.row]["posterURL"].stringValue.isEmpty else {
+                guard tvShowData[indexPath.row]["posterURL"].stringValue != "https://image.tmdb.org/t/p/w500" else {
                     cell.tvPosterImageView.image = UIImage(named: "iosLogo")
                     cell.tvPosterImageView.contentMode = .scaleAspectFit
                     return cell
