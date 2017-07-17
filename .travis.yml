@@ -5,5 +5,5 @@ xcode_scheme: MoviesTests
 xcode_sdk: iphonesimulator10.1
 script:
     - xcodebuild clean build -sdk iphonesimulator -workspace Movies.xcworkspace -scheme MoviesTests CODE_SIGNING_REQUIRED=NO
- notifications:
+notifications:
     slack: movies-ios:DeZLwYwsXEmZheWzYgoMhqk7
