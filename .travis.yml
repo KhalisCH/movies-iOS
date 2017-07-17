@@ -1,0 +1,6 @@
+language: objective-c
+osx_image: xcode8.1
+xcode_workspace: Movies.xcworkspace
+xcode_scheme: MoviesTests
+os: osx
+xcode_sdk: iphonesimulator10.1
